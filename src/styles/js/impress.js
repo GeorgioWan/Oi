@@ -331,6 +331,7 @@
             } );
         };
         
+        // via https://github.com/naugtur/builder4impress
         var newStep = function ( el ) {
             initStep(el);
             steps.push(el);
@@ -427,6 +428,13 @@
 
         // Used to reset timeout for `impress:stepenter` event
         var stepEnterTimeout = null;
+        
+        // `setTransformationCallback` API function - sets a callback that allows passing the current transformations outside, to the editing tool
+        // via https://github.com/naugtur/builder4impress
+        var transformationCallback = null;
+        var setTransformationCallback = function(callback){
+          transformationCallback=callback;
+        }
 
         // `goto` API function that moves to step given with `el` parameter
         // (by index, id or element), with a transition `duration` optionally

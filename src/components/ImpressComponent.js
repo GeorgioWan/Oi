@@ -18,7 +18,6 @@ export default class ImpressComponent extends Component {
     return (
       <div id='impress'>
         <div>
-          <div id='overview' className='step' data-x='1000' data-y='1000' data-scale='3'></div>
         {
           slides.map((slide, index) =>
             <div key={index} id={slide.id || 'o-impressive-'+(index+1)} className='step'
@@ -26,10 +25,10 @@ export default class ImpressComponent extends Component {
                  data-y={slide.data.y} 
                  data-z={slide.data.z}
                  data-scale={slide.data.scale}
-                 data-rotate={slide.data.rotate.value}
-                 data-rotate-x={slide.data.rotate.x}
-                 data-rotate-y={slide.data.rotate.y}
-                 data-rotate-z={slide.data.rotate.z}
+                 data-rotate={slide.data.rotate}
+                 data-rotate-x={slide.data.rotateX}
+                 data-rotate-y={slide.data.rotateY}
+                 data-rotate-z={slide.data.rotateZ}
                  dangerouslySetInnerHTML={{__html: slide.content}}>
             </div>)
         }
