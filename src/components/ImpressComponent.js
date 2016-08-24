@@ -5,12 +5,17 @@ export default class ImpressComponent extends Component {
     super(props);
   }
   
-  componentDidUpdate(){
-    let api = impress();
-    let steps = document.getElementsByClassName('step');
-    let _elm = steps[steps.length-1];
-    api.newStep(_elm);
-    api.goto(_elm.id);
+  componentDidUpdate(prevProps){
+    let _api = impress();
+    let p_length = prevProps.slides.length;
+    let c_length = this.props.slides.length;
+    
+    if (p_length < c_length) // Add slide
+    {
+      let steps = document.getElementsByClassName('step');
+      let _elm = steps[steps.length-1];
+      _api.newStep(_elm);
+    }
   }
   
   render() {

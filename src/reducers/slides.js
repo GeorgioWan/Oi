@@ -10,17 +10,7 @@ const overview = new step({
   }
 });
 
-const test = new step({
-  content: '<h1>WWWWWWWWWW</h1>',
-  data: {
-    x: 300,
-    scale: 2,
-    rotate: 90,
-    rotateX: 30
-  }
-});
-
-export function slides (state = [overview, test], action) {
+export function slides (state = [overview], action) {
   switch (action.type) {
     case ADD_SLIDE:
       return [

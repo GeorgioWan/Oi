@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import {Button, FormGroup, FormControl, InputGroup, Panel} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 import DataPanel from './DataPanel';
 import {step} from '../types/step';
 
@@ -12,9 +11,12 @@ export default class Editor extends Component {
   newSlide(actions){
     let _move = document.getElementsByClassName('step').length;
     let _step = new step({
-      content: '<div>New Slide</div>',
+      id: 'o-impress-' + _move,
+      content: '<div>New Slide ' + _move + '</div>',
       data: {
-        x: _move*300
+        x: _move*300,
+        y: _move*300,
+        z: _move*300
       }
     });
     actions.addSlide(_step);
@@ -23,6 +25,7 @@ export default class Editor extends Component {
     let _steps = [...document.getElementsByClassName('step')];
     let _cur = document.getElementsByClassName('step active')[0];
     let _target = _steps.indexOf(_cur);
+    this.api.delStep(_target);
     actions.delSlide(_target);
   }
   handleClick(e){

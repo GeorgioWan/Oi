@@ -14,7 +14,6 @@ class data {
 export default class DataPanel extends Component {
   constructor(props){
     super(props);
-    this.api = impress();
   }
   getData(datas){
     let _cur = document.getElementsByClassName('step active')[0];

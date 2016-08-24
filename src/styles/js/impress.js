@@ -230,7 +230,9 @@
                 init: empty,
                 goto: empty,
                 prev: empty,
-                next: empty
+                next: empty,
+                newStep: empty,
+                delStep: empty
             };
         }
 
@@ -335,8 +337,14 @@
         var newStep = function ( el ) {
             initStep(el);
             steps.push(el);
+            goto(el);
         };
-
+        
+        var delStep = function ( el ) {
+            steps = steps.filter((value, index) => index !== parseInt(el));
+            steps.length > 0 ? goto(el-1) : goto(0);
+        };
+        
         // `init` API function that initializes (and runs) the presentation.
         var init = function() {
             if ( initialized ) { return; }
@@ -672,6 +680,7 @@
             next: next,
             prev: prev,
             newStep:newStep,
+            delStep:delStep,
         } );
 
     };
