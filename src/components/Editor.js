@@ -18,15 +18,20 @@ export default class Editor extends Component {
         y: _move*300,
         z: _move*300
       }
-    });
+    }).toElement();
     actions.addSlide(_step);
   }
   deleteSlide(actions){
     let _steps = [...document.getElementsByClassName('step')];
     let _cur = document.getElementsByClassName('step active')[0];
     let _target = _steps.indexOf(_cur);
-    this.api.delStep(_target);
-    actions.delSlide(_target);
+    if ( _target === 0 )
+      alert('Could not delete #overview');
+    else
+    {
+      this.api.delStep(_target);
+      actions.delSlide(_target);
+    }
   }
   handleClick(e){
     let {actions} = this.props;

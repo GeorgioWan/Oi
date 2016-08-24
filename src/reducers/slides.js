@@ -8,7 +8,7 @@ const overview = new step({
     y: 1000,
     scale: 3
   }
-});
+}).toElement();
 
 export function slides (state = [overview], action) {
   switch (action.type) {

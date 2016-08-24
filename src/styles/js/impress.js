@@ -341,8 +341,14 @@
         };
         
         var delStep = function ( el ) {
-            steps = steps.filter((value, index) => index !== parseInt(el));
-            steps.length > 0 ? goto(el-1) : goto(0);
+            if (el === 0)
+                console.log(steps);
+            else
+            {
+                steps = steps.filter((value, index) => index !== parseInt(el));
+                steps.length > 0 ? goto(el-1) : goto(0);
+                console.log(steps);
+            }
         };
         
         // `init` API function that initializes (and runs) the presentation.
