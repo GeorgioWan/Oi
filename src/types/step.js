@@ -2,7 +2,8 @@ import React from 'react';
 
 export class step {
   constructor({
-    id='', 
+    id='',
+    active=false,
     content='', 
     data={
       x: 0,
@@ -16,24 +17,25 @@ export class step {
     }
   }){
     this.id= id;
+    this.active= active;
     this.content= content;
     this.data = {...data};
-    this.index = 0;
   }
   
   toElement(){
-    return (
-      <div id={this.id || 'o-impressive-'+(this.index+1)} className='step'
-           data-x={this.data.x} 
-           data-y={this.data.y} 
-           data-z={this.data.z}
-           data-scale={this.data.scale}
-           data-rotate={this.data.rotate}
-           data-rotate-x={this.data.rotateX}
-           data-rotate-y={this.data.rotateY}
-           data-rotate-z={this.data.rotateZ}
-           dangerouslySetInnerHTML={{__html: this.content}}>
-      </div>
-    );
+    let elem = document.createElement('div');
+    elem.className = 'step';
+    elem.id = this.id;
+    elem.dataset.x = this.data.x;
+    elem.dataset.y = this.data.y;
+    elem.dataset.z = this.data.z;
+    elem.dataset.scale = this.data.scale;
+    elem.dataset.rotate = this.data.rotate;
+    elem.dataset.rotateX = this.data.rotateX;
+    elem.dataset.rotateY = this.data.rotateY;
+    elem.dataset.rotateZ = this.data.rotateZ;
+    elem.innerHTML = this.content;
+    
+    return elem;
   }
 }

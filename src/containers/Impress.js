@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import * as allActions from '../actions/actions';
 import { ImpressComponent } from '../components';
 
 class Impress extends Component {
   render() {
-    const {slides} = this.props;
     return (
-      <ImpressComponent slides={slides} />
+      <ImpressComponent {...this.props} />
     );
   }
 }
@@ -17,6 +17,13 @@ function mapStateToProps(state) {
   return state;
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(allActions, dispatch)
+  };
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Impress);

@@ -9,29 +9,10 @@ export default class Editor extends Component {
     this.api = impress();
   }
   newSlide(actions){
-    let _move = document.getElementsByClassName('step').length;
-    let _step = new step({
-      id: 'o-impress-' + _move,
-      content: '<div>New Slide ' + _move + '</div>',
-      data: {
-        x: _move*300,
-        y: _move*300,
-        z: _move*300
-      }
-    }).toElement();
-    actions.addSlide(_step);
+    actions.addSlide();
   }
   deleteSlide(actions){
-    let _steps = [...document.getElementsByClassName('step')];
-    let _cur = document.getElementsByClassName('step active')[0];
-    let _target = _steps.indexOf(_cur);
-    if ( _target === 0 )
-      alert('Could not delete #overview');
-    else
-    {
-      this.api.delStep(_target);
-      actions.delSlide(_target);
-    }
+    actions.delSlide();
   }
   handleClick(e){
     let {actions} = this.props;
@@ -50,7 +31,7 @@ export default class Editor extends Component {
         <Button name="add" onClick={this.handleClick.bind(this)}>ADD</Button>
         <Button name="del" onClick={this.handleClick.bind(this)}>DEL</Button>
         <Button name="overview" onClick={this.handleClick.bind(this)}>Overview</Button>
-        <DataPanel />
+        <DataPanel {...this.props}/>
       </div>
     );
   }

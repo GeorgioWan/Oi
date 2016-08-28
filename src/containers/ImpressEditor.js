@@ -7,9 +7,8 @@ import { Editor } from '../components';
 
 class ImpressEditor extends Component {
   render() {
-    const {actions, slides} = this.props;
     return (
-      <Editor actions={actions} slides={slides} />
+      <Editor {...this.props} />
     );
   }
 }

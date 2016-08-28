@@ -346,9 +346,10 @@
             else
             {
                 steps = steps.filter((value, index) => index !== parseInt(el));
+                delete stepsData[ 'impress-' + el.id ];
                 steps.length > 0 ? goto(el-1) : goto(0);
-                console.log(steps);
             }
+            console.log('[stepData] >> ' + JSON.stringify(stepsData));
         };
         
         // `init` API function that initializes (and runs) the presentation.
@@ -810,6 +811,20 @@
         }, false );
 
         // Delegated handler for clicking on step elements
+        function handleClick( event ) {
+            var target = event.target;
+
+            // Find closest step element that is not active
+            while ( !( target.classList.contains( "step" ) &&
+                      !target.classList.contains( "active" ) ) &&
+                      ( target !== document.documentElement ) ) {
+                target = target.parentNode;
+            }
+
+            if ( api.goto( target ) ) {
+                event.preventDefault();
+            }
+        }
         document.addEventListener( "click", function( event ) {
             var target = event.target;
 

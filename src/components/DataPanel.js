@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Col, Button, FormGroup, FormControl, ControlLabel, InputGroup, Panel} from 'react-bootstrap';
-import {step} from '../types/step';
 
 class data {
   constructor(prop, ref, elm){
@@ -15,32 +14,24 @@ export default class DataPanel extends Component {
   constructor(props){
     super(props);
   }
-  getData(datas){
-    let _cur = document.getElementsByClassName('step active')[0];
-    let _Data = {};
-    datas.map((d, i) => {
-      _Data[d._ref] = ReactDOM.findDOMNode(this.refs[d._ref]);
-      if ( d._elm === 'content' )
-        _Data[d._ref].value = _cur.innerHTML;
-      else
-        _Data[d._ref].value = _cur.dataset[d._elm] || 0;
-    });
-  }
-  loadData(pos, scale, rot, content){
-    this.getData(pos);
-    this.getData(scale);
-    this.getData(rot);
-    this.getData(content);
-    
+  handleChange(e){
+    console.log('hello '+e.target.value);
   }
   fieldGroup({_prop, _ref, _elm}, index){
+    const {slides} = this.props;
+    const _cur = slides.find((s) => s.active === true);
+    
     return (
       <InputGroup key={index} >
         <InputGroup.Addon>{_prop}</InputGroup.Addon>
         <FormControl ref={_ref} 
                      type={_elm === 'content' ? 'textarea' : 'text'}
                      componentClass={_elm === 'content' ? 'textarea' : 'input'}
-                     placeholder="Empty here" />
+                     placeholder="Empty here"
+                     value={ _elm === 'content' ? 
+                            (_cur !== undefined ? _cur[_elm] : '') : 
+                            (_cur !== undefined ? _cur.data[_elm] : 0) || 0}
+                     onChange={this.handleChange.bind(this)}/>
       </InputGroup>
     );
   }
@@ -67,7 +58,6 @@ export default class DataPanel extends Component {
     return (
       <Col md={2}>
         <Panel>
-          <Button name="load" onClick={this.loadData.bind(this, pos, scale, rot, content)}>LOAD</Button>
           <form>
             <FormGroup>
               <ControlLabel>Position & Scale</ControlLabel>
