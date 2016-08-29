@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Row, Col, Button, Modal, FormGroup, FormControl, ControlLabel, InputGroup} from 'react-bootstrap';
-import {step} from '../types/step';
+import TinymceEditor from './TinymceEditor';
 
 export default class AddModal extends Component {
   constructor(props){
@@ -27,7 +27,7 @@ export default class AddModal extends Component {
       rotate:  0,
       rotateX: 0,
       rotateY: 0,
-      content: '<div>Create Your Own Slide</div>'
+      content: '<p>Create Your Own Content!</p>'
     });
   }
   handleClick(e){
@@ -45,6 +45,9 @@ export default class AddModal extends Component {
   }
   handleChange(e){
     this.setState({ [e.target.name]: e.target.value });
+  }
+  contentChange(content){
+    this.setState({content});
   }
   
   render() {
@@ -94,13 +97,8 @@ export default class AddModal extends Component {
               <Row>
                 <Col md={12}>
                   <ControlLabel>Content</ControlLabel>
-                  <FormControl name={'content'}
-                               type={'textarea'}
-                               componentClass={'textarea'}
-                               placeholder="Set your element here"
-                               onChange={this.handleChange.bind(this)}
-                               value={this.state.content}/>
-                  
+                  <TinymceEditor content={this.state.content} 
+                                 onChange={this.contentChange.bind(this)}/>
                 </Col>
               </Row>
             </form>
