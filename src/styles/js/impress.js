@@ -798,7 +798,7 @@
             var target = event.target;
             while ( ( target.tagName !== "A" ) &&
                     ( target !== document.documentElement ) ) {
-                target = target.parentNode;
+                target = target.parentNode || document.documentElement;
             }
 
             if ( target.tagName === "A" ) {
@@ -824,7 +824,7 @@
             while ( !( target.classList.contains( "step" ) &&
                       !target.classList.contains( "active" ) ) &&
                       ( target !== document.documentElement ) ) {
-                target = target.parentNode;
+                target = target.parentNode || document.documentElement;
             }
 
             if ( api.goto( target ) ) {
@@ -838,7 +838,7 @@
             while ( !( target.classList.contains( "step" ) &&
                       !target.classList.contains( "active" ) ) &&
                       ( target !== document.documentElement ) ) {
-                target = target.parentNode;
+                target = target.parentNode || document.documentElement;
             }
 
             if ( api.goto( target ) ) {
