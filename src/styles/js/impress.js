@@ -232,7 +232,8 @@
                 prev: empty,
                 next: empty,
                 newStep: empty,
-                delStep: empty
+                delStep: empty,
+                getSteps: empty,
             };
         }
 
@@ -345,11 +346,15 @@
                 console.log(steps);
             else
             {
+                var _del = steps[el];
                 steps = steps.filter((value, index) => index !== parseInt(el));
-                delete stepsData[ 'impress-' + el.id ];
+                delete stepsData[ 'impress-' + _del.id ];
                 steps.length > 0 ? goto(el-1) : goto(0);
             }
-            console.log('[stepData] >> ' + JSON.stringify(stepsData));
+        };
+        
+        var getSteps = function(){
+            return steps;
         };
         
         // `init` API function that initializes (and runs) the presentation.
@@ -688,6 +693,7 @@
             prev: prev,
             newStep:newStep,
             delStep:delStep,
+            getSteps:getSteps,
         } );
 
     };

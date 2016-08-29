@@ -5,9 +5,10 @@ export const CUR_SLIDE = 'CUR_SLIDE';
 export const EDIT_SLIDE = 'EDIT_SLIDE';
 
 
-export function addSlide() {
+export function addSlide(slide) {
   return {
-    type: ADD_SLIDE
+    type: ADD_SLIDE,
+    slide
   }
 }
 

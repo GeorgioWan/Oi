@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {Col, Button, FormGroup, FormControl, ControlLabel, InputGroup, Panel} from 'react-bootstrap';
+import {Col, FormGroup, FormControl, ControlLabel, InputGroup, Panel} from 'react-bootstrap';
 
 class data {
   constructor(prop, ref, elm){

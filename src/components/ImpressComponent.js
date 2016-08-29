@@ -5,10 +5,21 @@ export default class ImpressComponent extends Component {
   constructor(props){
     super(props);
   }
+  
+  componentDidUpdate(){
+    let _api = impress();
+    let {slides} = this.props;
+    let _cur = slides.find((s) => s.active === true);
+    
+    if (!_cur)
+      _api.goto('overview');
+    else
+      _api.goto(_cur.id);
+  }
 
   handleClick(e){
     let {actions} = this.props;
-    let _elm = e.target.parentNode;
+    let _elm = e.target.className.includes('step') ? e.target : e.target.parentNode;
     actions.curSlide(_elm.id);
   }
   
@@ -21,9 +32,9 @@ export default class ImpressComponent extends Component {
           <div id='overview' className='step' data-x='1000' data-y='1000' data-scale='3'></div>
         {
           slides.map((slide, index) =>
-
+            
             <div className='step' key={index}
-                 id={slide.id || 'o-impressive-'+(slide.index+1)}
+                 id={slide.id}
                  data-x={slide.data.x} 
                  data-y={slide.data.y} 
                  data-z={slide.data.z}

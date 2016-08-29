@@ -7,6 +7,9 @@ import store from './store';
 // react-redux
 import {Provider} from 'react-redux';
 
+// scss styles
+require('./styles/scss/_base.scss');
+
 // store subscribe
 let unsubscribe = store.subscribe(() => {
   //console.log(store.getState());
