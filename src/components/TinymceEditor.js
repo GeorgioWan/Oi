@@ -17,15 +17,13 @@ export default class TinymceEditor extends Component {
   render() {
     const {content} = this.props;
     return (
-      <div>
-        <TinyMCE content={content}
-                 config={{
-                   plugins: 'autolink link image lists print preview',
-                   toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | link image',
-                 }}
-                 onChange={this.handleEditorChange.bind(this)}
-        />
-      </div>
+      <TinyMCE content={content}
+               config={{
+                 plugins: 'autolink link image lists print preview',
+                 toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | link image',
+               }}
+               onChange={this.handleEditorChange.bind(this)}
+      />
     );
   }
 }

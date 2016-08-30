@@ -23,11 +23,10 @@ function updateActive(_oldState, _id){
   
   _oldState.forEach((s) => {
     s.active = s.id === _id ? true : false;
-      
     newState.push(s);
   });
   
-  if (_id === -1)
+  if (_id === -1 || _id === 'overview')
     _api.goto('overview');
     
   return newState;
@@ -64,23 +63,19 @@ function newSlide(_oldState, _newSlide){
 // 刪除 slide element
 function deleteSlide(_oldState){
   let _api = impress();
-  let _cur = _oldState.findIndex((s) => s.active === true);
+  let _activeStep = _api.getActiveStep();
+  let _cur = _oldState.findIndex((s) => s.id === _activeStep.id);
+  let _impressTarget = _cur + 1; // cus 'slidesData[0]' in impress is 'overview' in this case
   
   if ( _cur === -1 )
     alert('Sorry, you could not delete #OVERVIEW.');
   else
   {
-    let _prev = _cur - 1;
-    let _impressTarget = _cur + 1; // cus 'slidesData[0]' in impress is 'overview' in this case
-    
     _api.delStep(_impressTarget);
     
     let _newState = _oldState.filter((value, index) => index !== parseInt((_cur)));
     
-    if ( _prev !== -1 )
-      return updateActive(_newState, _newState[_prev].id);
-    else
-      return _newState;
+    return _newState;
   }
   
   return _oldState;

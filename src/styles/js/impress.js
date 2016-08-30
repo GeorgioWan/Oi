@@ -233,7 +233,7 @@
                 next: empty,
                 newStep: empty,
                 delStep: empty,
-                getSteps: empty,
+                getActiveStep: empty,
             };
         }
 
@@ -353,8 +353,8 @@
             }
         };
         
-        var getSteps = function(){
-            return steps;
+        var getActiveStep = function(){
+            return activeStep;
         };
         
         // `init` API function that initializes (and runs) the presentation.
@@ -693,7 +693,7 @@
             prev: prev,
             newStep:newStep,
             delStep:delStep,
-            getSteps:getSteps,
+            getActiveStep:getActiveStep,
         } );
 
     };

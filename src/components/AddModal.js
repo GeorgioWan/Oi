@@ -2,33 +2,27 @@ import React, { Component } from 'react';
 import {Row, Col, Button, Modal, FormGroup, FormControl, ControlLabel, InputGroup} from 'react-bootstrap';
 import TinymceEditor from './TinymceEditor';
 
+const defaultSlide = {
+  x: 0,
+  y: 0,
+  z: 0,
+  scale:   1,
+  rotate:  0,
+  rotateX: 0,
+  rotateY: 0,
+  content: '<p>Create Your Own Content!</p>'
+};
+
 export default class AddModal extends Component {
   constructor(props){
     super(props);
     this.state = {
       show: false,
-      
-      x: 0,
-      y: 0,
-      z: 0,
-      scale:   1,
-      rotate:  0,
-      rotateX: 0,
-      rotateY: 0,
-      content: '<div>Create Your Own Slide</div>'
+      ...defaultSlide
     };
   }
   initState(){
-    this.setState({
-      x: 0,
-      y: 0,
-      z: 0,
-      scale:   1,
-      rotate:  0,
-      rotateX: 0,
-      rotateY: 0,
-      content: '<p>Create Your Own Content!</p>'
-    });
+    this.setState(defaultSlide);
   }
   handleClick(e){
     if (e.target.name === 'open')
@@ -73,6 +67,7 @@ export default class AddModal extends Component {
         <Modal show={this.state.show}
                onHide={close}
                container={this}
+               enforceFocus={false}
                aria-labelledby="contained-modal-title">
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title">New Slide</Modal.Title>

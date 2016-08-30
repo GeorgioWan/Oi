@@ -7,20 +7,17 @@ export default class ImpressComponent extends Component {
   }
   
   componentDidUpdate(){
-    let _api = impress();
-    let {slides} = this.props;
-    let _cur = slides.find((s) => s.active === true);
-    
-    if (!_cur)
-      _api.goto('overview');
-    else
-      _api.goto(_cur.id);
+    this.updateFromImpress();
   }
 
   handleClick(e){
-    let {actions} = this.props;
-    let _elm = e.target.className.includes('step') ? e.target : e.target.parentNode;
-    actions.curSlide(_elm.id);
+  }
+  
+  updateFromImpress(){
+    let _api = impress();
+    let _activeStep = _api.getActiveStep();
+    
+    _api.goto(_activeStep.id);
   }
   
   render() {
