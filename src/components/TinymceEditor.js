@@ -9,10 +9,6 @@ export default class TinymceEditor extends Component {
     if (this.props.onChange)
       this.props.onChange(e.target.getContent());
   }
-  hanedleClick(e){
-    if (this.props.onClick)
-      this.props.onClick(!this.props.open);
-  }
   
   render() {
     const {content} = this.props;

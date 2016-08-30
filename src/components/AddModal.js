@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Row, Col, Button, Modal, FormGroup, FormControl, ControlLabel, InputGroup} from 'react-bootstrap';
-import TinymceEditor from './TinymceEditor';
+import {Button, Modal} from 'react-bootstrap';
+import PropsEditPanel from './PropsEditPanel';
 
 const defaultSlide = {
   x: 0,
@@ -38,7 +38,10 @@ export default class AddModal extends Component {
     
   }
   handleChange(e){
-    this.setState({ [e.target.name]: e.target.value });
+    if (typeof(e) === 'string')
+      this.setState({ content: e });
+    else
+      this.setState({ [e.target.name]: e.target.value });
   }
   contentChange(content){
     this.setState({content});
@@ -46,20 +49,6 @@ export default class AddModal extends Component {
   
   render() {
     const close = () => this.setState({show: false});
-    const inputGroup = (_title, _name ) => (
-      <FormGroup>
-        <InputGroup>
-          <InputGroup.Addon>{_title}</InputGroup.Addon>
-          <FormControl name={_name}
-                       type={'text'}
-                       componentClass={'input'}
-                       placeholder="Set value here"
-                       onChange={this.handleChange.bind(this)}
-                       value={this.state[_name]}/>
-        </InputGroup>
-        <FormControl.Feedback />
-      </FormGroup>
-    );
     return (
       <span>
         <Button name="open" onClick={this.handleClick.bind(this)}>ADD</Button>
@@ -73,34 +62,22 @@ export default class AddModal extends Component {
             <Modal.Title id="contained-modal-title">New Slide</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form>
-              <Row>
-                <Col md={6}>
-                  <ControlLabel>Position & Scale</ControlLabel>
-                  { inputGroup('Position X', 'x') }
-                  { inputGroup('Position Y', 'y') }
-                  { inputGroup('Position Z', 'z') }
-                  { inputGroup('Scale Size', 'scale') }
-                </Col>
-                <Col md={6}>
-                  <ControlLabel>Rotation</ControlLabel>
-                  { inputGroup('Rotation', 'rotate') }
-                  { inputGroup('Rotation X', 'rotateX') }
-                  { inputGroup('Rotation Y', 'rotateY') }
-                </Col>
-              </Row>
-              <Row>
-                <Col md={12}>
-                  <ControlLabel>Content</ControlLabel>
-                  <TinymceEditor content={this.state.content} 
-                                 onChange={this.contentChange.bind(this)}/>
-                </Col>
-              </Row>
-            </form>
+            <PropsEditPanel data={this.state}
+                            content={this.state.content}
+                            onChange={this.handleChange.bind(this)}/>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={close}>Cancel</Button>
-            <Button name="add" onClick={this.handleClick.bind(this)}>新增</Button>
+            <Button bsStyle='link' 
+                    bsSize='sm'
+                    onClick={close} 
+                    style={{color: 'gray'}}>
+              Cancel
+            </Button>
+            <Button name="add" 
+                    bsStyle='success'
+                    onClick={this.handleClick.bind(this)}>
+              Done!
+            </Button>
           </Modal.Footer>
         </Modal>
       </span>

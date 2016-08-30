@@ -38,7 +38,6 @@ function newSlide(_oldState, _newSlide){
   let _move = _index++;
   let _step = new step({
     id: 'o-impress-' + _move,
-    active: true,
     content: _newSlide.content,
     data: {
       x: parseInt(_newSlide.x),
