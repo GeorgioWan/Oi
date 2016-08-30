@@ -603,16 +603,20 @@
 
         // `prev` API function goes to previous step (in document order)
         var prev = function() {
-            var prev = steps.indexOf( activeStep ) - 1;
+            //var prev = steps.indexOf( activeStep ) - 1;
+            var prev = steps.findIndex(function (s) { return s.id === activeStep.id }) - 1;
             prev = prev >= 0 ? steps[ prev ] : steps[ steps.length - 1 ];
+            prev = document.getElementById(prev.id);
 
             return goto( prev );
         };
 
         // `next` API function goes to next step (in document order)
         var next = function() {
-            var next = steps.indexOf( activeStep ) + 1;
+            //var next = steps.indexOf( activeStep ) + 1;
+            var next = steps.findIndex(function (s) { return s.id === activeStep.id }) + 1;
             next = next < steps.length ? steps[ next ] : steps[ 0 ];
+            next = document.getElementById(next.id);
 
             return goto( next );
         };
@@ -817,20 +821,6 @@
         }, false );
 
         // Delegated handler for clicking on step elements
-        function handleClick( event ) {
-            var target = event.target;
-
-            // Find closest step element that is not active
-            while ( !( target.classList.contains( "step" ) &&
-                      !target.classList.contains( "active" ) ) &&
-                      ( target !== document.documentElement ) ) {
-                target = target.parentNode || document.documentElement;
-            }
-
-            if ( api.goto( target ) ) {
-                event.preventDefault();
-            }
-        }
         document.addEventListener( "click", function( event ) {
             var target = event.target;
 
