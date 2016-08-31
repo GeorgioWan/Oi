@@ -1,8 +1,7 @@
 export const ADD_SLIDE = 'ADD_SLIDE';
 export const DEL_SLIDE = 'DEL_SLIDE';
-
-export const SET_CUR_STEP = 'SET_CUR_STEP';
 export const EDIT_STEP = 'EDIT_STEP';
+export const ACTIVE_STEP = 'ACTIVE_STEP';
 
 
 export function addSlide(slide) {
@@ -18,16 +17,17 @@ export function delSlide() {
   };
 }
 
-export function setCurStep(step) {
+export function editStep(target, data) {
   return {
-    type: SET_CUR_STEP,
-    step
+    type: EDIT_STEP,
+    target,
+    data
   };
 }
 
-export function editStep(step) {
+export function activeStep(id) {
   return {
-    type: EDIT_STEP,
-    step
+    type: ACTIVE_STEP,
+    id
   };
 }

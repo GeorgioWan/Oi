@@ -3,6 +3,7 @@ import React from 'react';
 export class step {
   constructor({
     id='',
+    active=false,
     content='', 
     data={
       x: 0,
@@ -16,6 +17,7 @@ export class step {
     }
   }){
     this.id= id;
+    this.active= active;
     this.content= content;
     this.data = {...data};
   }

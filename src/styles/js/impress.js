@@ -231,9 +231,6 @@
                 goto: empty,
                 prev: empty,
                 next: empty,
-                newStep: empty,
-                delStep: empty,
-                getActiveStep: empty,
             };
         }
 
@@ -321,7 +318,7 @@
             if ( !el.id ) {
                 el.id = "step-" + ( idx + 1 );
             }
-
+            
             stepsData[ "impress-" + el.id ] = step;
 
             css( el, {
@@ -695,6 +692,7 @@
             goto: goto,
             next: next,
             prev: prev,
+            initStep: initStep,
             newStep:newStep,
             delStep:delStep,
             getActiveStep:getActiveStep,

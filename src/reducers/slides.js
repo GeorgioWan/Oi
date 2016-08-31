@@ -1,14 +1,20 @@
-import {ADD_SLIDE, DEL_SLIDE, CUR_SLIDE} from '../actions/actions';
+import {ADD_SLIDE, DEL_SLIDE, EDIT_STEP, ACTIVE_STEP} from '../actions/actions';
 import {step} from '../types/step';
 
 export function slides (state = [], action) {
   switch (action.type) {
     case ADD_SLIDE:
-      return newSlide(state, action.slide);
+      return newSlide( state, action.slide);
+      
     case DEL_SLIDE:
-      return deleteSlide(state);
-    case CUR_SLIDE:
-      return updateActive(state, action.id);
+      return deleteSlide( state );
+      
+    case EDIT_STEP:
+      return editStep( state, action.target, action.data);
+      
+    case ACTIVE_STEP:
+      return updateActive( state, 
+                           action.id);
     default:
       return state;
   }
@@ -16,13 +22,22 @@ export function slides (state = [], action) {
 
 let _index = 1;
 
+// 將 element init 成 impress step，並填回 style
+function impressingStep(step, isNew){
+  let _api = impress();
+  let elem = step.toElement();
+  
+  isNew ? _api.newStep(elem) : _api.initStep(elem);
+  step['style'] = elem.style;
+}
+
 // 更新 active 狀態
 function updateActive(_oldState, _id){
   let _api = impress();
   let newState = new Array();
   
   _oldState.forEach((s) => {
-    //s.active = s.id === _id ? true : false;
+    s.active = s.id === _id ? true : false;
     newState.push(s);
   });
   
@@ -38,6 +53,7 @@ function newSlide(_oldState, _newSlide){
   let _move = _index++;
   let _step = new step({
     id: 'o-impress-' + _move,
+    active: true,
     content: _newSlide.content,
     data: {
       x: parseInt(_newSlide.x),
@@ -51,9 +67,8 @@ function newSlide(_oldState, _newSlide){
     }
   });
   
-  let _solve = _step.toElement();
-  _api.newStep(_solve);
-  _step['style'] = _solve.style;
+  impressingStep(_step, true);
+  
   _oldState.push(_step);
   
   return updateActive(_oldState, _step.id);
@@ -64,6 +79,7 @@ function deleteSlide(_oldState){
   let _api = impress();
   let _activeStep = _api.getActiveStep();
   let _cur = _oldState.findIndex((s) => s.id === _activeStep.id);
+  let _prev = _cur -1;
   let _impressTarget = _cur + 1; // cus 'slidesData[0]' in impress is 'overview' in this case
   
   if ( _cur === -1 )
@@ -73,9 +89,30 @@ function deleteSlide(_oldState){
     _api.delStep(_impressTarget);
     
     let _newState = _oldState.filter((value, index) => index !== parseInt((_cur)));
+    let _prevStep = _newState[_prev] ? _newState[_prev].id : -1;
     
-    return _newState;
+    return updateActive(_newState, _prevStep);
   }
   
   return _oldState;
+}
+
+// 編輯 step element
+function editStep(_oldState, target, data){
+  let _api = impress();
+  target = _oldState.findIndex((s) => s === target);
+  
+  if (data.name === 'content')
+    _oldState[target][data.name] = data.value;
+  else
+  {
+    if ( data.name === 'rotate' )
+      _oldState[target].data['rotateZ'] = data.value;
+      
+    _oldState[target].data[data.name] = data.value;
+    
+    impressingStep(_oldState[target], false);
+  }
+  
+  return [..._oldState];
 }

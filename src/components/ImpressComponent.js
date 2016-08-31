@@ -23,7 +23,7 @@ export default class ImpressComponent extends Component {
     if (target !== document.documentElement)
     {
       target = slides.find((s) => s.id === target.id);
-      actions.setCurStep(target);
+      actions.activeStep(target.id);
     }
   }
   

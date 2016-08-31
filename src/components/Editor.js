@@ -16,7 +16,8 @@ export default class Editor extends Component {
     if (e.target.name === 'del')
       this.deleteSlide(actions);
     else if (e.target.name === 'overview')
-      actions.setCurStep(-1);
+      actions.activeStep(-1);
+      
   }
   handleChange(e){
     console.log(e);
