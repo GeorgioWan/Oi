@@ -22,7 +22,7 @@ function updateActive(_oldState, _id){
   let newState = new Array();
   
   _oldState.forEach((s) => {
-    s.active = s.id === _id ? true : false;
+    //s.active = s.id === _id ? true : false;
     newState.push(s);
   });
   

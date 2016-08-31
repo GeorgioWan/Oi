@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TinyMCE from 'react-tinymce';
+import TinyMCE from '@realgeeks/react-tinymce';
 
 export default class TinymceEditor extends Component {
   constructor(props){

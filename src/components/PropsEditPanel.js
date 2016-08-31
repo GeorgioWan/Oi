@@ -46,7 +46,7 @@ export default class PropsEditPanel extends Component {
         <Row>
           <Col md={12}>
             <ControlLabel>Content</ControlLabel>
-            <TinymceEditor content={content} 
+            <TinymceEditor content={content}
                            onChange={this.handleChange.bind(this)}/>
           </Col>
         </Row>

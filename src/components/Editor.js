@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Button} from 'react-bootstrap';
 import DataPanel from './DataPanel';
 import AddModal from './AddModal';
-import PropsEditPanel from './PropsEditPanel';
 
 export default class Editor extends Component {
   constructor(props){
@@ -17,7 +16,7 @@ export default class Editor extends Component {
     if (e.target.name === 'del')
       this.deleteSlide(actions);
     else if (e.target.name === 'overview')
-      actions.curSlide(-1);
+      actions.setCurStep(-1);
   }
   handleChange(e){
     console.log(e);

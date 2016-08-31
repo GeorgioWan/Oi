@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/gaearon/react-hot-boilerplate",
   "devDependencies": {
+    "@realgeeks/react-tinymce": "^0.5.2",
     "babel-core": "^6.0.20",
     "babel-eslint": "^4.1.3",
     "babel-loader": "^6.0.1",
@@ -39,7 +40,6 @@
     "eslint-plugin-react": "^3.6.2",
     "node-sass": "^3.8.0",
     "react-hot-loader": "^1.3.0",
-    "react-tinymce": "^0.5.1",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.2",

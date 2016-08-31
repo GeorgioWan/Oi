@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Col, Panel} from 'react-bootstrap';
 import PropsEditPanel from './PropsEditPanel';
-import {step} from '../types/step';
 
 export default class DataPanel extends Component {
   constructor(props){
@@ -12,7 +11,7 @@ export default class DataPanel extends Component {
   }
   
   render() {
-    const cur = this.props.slides[0] || new step({});
+    const cur = this.props.curStep;
     return (
       <Col md={3}>
         <Panel>
