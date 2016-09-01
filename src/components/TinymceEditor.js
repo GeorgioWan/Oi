@@ -15,8 +15,8 @@ export default class TinymceEditor extends Component {
     return (
       <TinyMCE content={content}
                config={{
-                 plugins: 'autolink link image lists print preview',
-                 toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | link image',
+                 plugins: 'autolink link image lists print preview textcolor colorpicker',
+                 toolbar: 'undo redo | bold italic forecolor backcolor | alignleft aligncenter alignright | link image',
                }}
                onChange={this.handleEditorChange.bind(this)}
       />

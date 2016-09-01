@@ -40,24 +40,24 @@ export default class ImpressComponent extends Component {
     return (
       <div id='impress'>
         <div>
-          <div id='overview' className='step' data-x='1000' data-y='1000' data-scale='3'></div>
+        <div id='overview' className='step' data-x='0' data-y='0' data-scale='3'></div>
         {
           slides.map((slide, index) => {
             return (
               <div className='step' key={index}
                    id={slide.id}
-                   data-x={slide.data.x} 
-                   data-y={slide.data.y} 
-                   data-z={slide.data.z}
-                   data-scale={slide.data.scale}
-                   data-rotate={slide.data.rotate}
-                   data-rotate-x={slide.data.rotateX}
-                   data-rotate-y={slide.data.rotateY}
-                   data-rotate-z={slide.data.rotateZ}
+                   data-x={slide.data.x || 0}
+                   data-y={slide.data.y || 0} 
+                   data-z={slide.data.z || 0}
+                   data-scale={slide.data.scale || 1}
+                   data-rotate={slide.data.rotate || 0}
+                   data-rotate-x={slide.data.rotateX || 0}
+                   data-rotate-y={slide.data.rotateY || 0}
+                   data-rotate-z={slide.data.rotateZ || slide.data.rotate || 0}
                    dangerouslySetInnerHTML={{__html: slide.content}}
                    onClick={this.handleClick.bind(this)}
-                   style={{ position: slide.style.position,
-                            transform: slide.style.transform
+                   style={{ position: slide.style ? slide.style.position : '',
+                            transform: slide.style ? slide.style.transform : ''
                    }}>
               </div>
             );

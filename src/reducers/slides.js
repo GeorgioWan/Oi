@@ -1,7 +1,10 @@
 import {ADD_SLIDE, DEL_SLIDE, EDIT_STEP, ACTIVE_STEP} from '../actions/actions';
 import {step} from '../types/step';
+import {start} from '../example/start';
 
-export function slides (state = [], action) {
+const defaultState = start;
+
+export function slides (state = [...defaultState], action) {
   switch (action.type) {
     case ADD_SLIDE:
       return newSlide( state, action.slide);

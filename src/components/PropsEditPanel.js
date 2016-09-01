@@ -22,7 +22,7 @@ export default class PropsEditPanel extends Component {
                        componentClass={'input'}
                        placeholder="Set value here"
                        onChange={this.handleChange.bind(this)}
-                       value={data[_name]}/>
+                       value={data[_name] || (_name === 'scale' ? 1 : 0)}/>
         </InputGroup>
       </FormGroup>
     );
