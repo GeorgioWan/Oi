@@ -12,23 +12,25 @@ export const start = [new step({
   data: {
     x: 1300,
     y: 255,
-    rotate: 90,
+    rotateZ: 90,
   }
 }), new step({
   id: 'start-3',
-  content: '<p style=\"text-align: right;\"><strong>[Oi]</strong> means that you should be <span style=\"background-color: #008080;\">&nbsp;</span><strong><span style=\"color: #e8403a; background-color: #008080;\">O</span></strong><span style=\"background-color: #008080;\"><span style=\"color: #ffffff;\">h!<strong>&nbsp;</strong>It\'s</span><strong>&nbsp;<span style=\"color: #e8403a;\">i</span></strong><span style=\"color: #ffffff;\">mpressive!<strong>&nbsp;</strong></span></span></p>',
+  content: '<p><strong>[Oi]</strong> means that you should be <span style=\"background-color: #008080;\">&nbsp;</span><strong><span style=\"color: #e8403a; background-color: #008080;\">O</span></strong><span style=\"background-color: #008080;\"><span style=\"color: #ffffff;\">h!<strong>&nbsp;</strong>It\'s</span><strong>&nbsp;<span style=\"color: #e8403a;\">i</span></strong><span style=\"color: #ffffff;\">mpressive!<strong>&nbsp;</strong></span></span></p>',
   data: {
     x: 490,
     y: 300,
-    scale: 2
+    scale: 2,
+    rotateZ: 180,
   }
 }), new step({
   id: 'start-4',
-  content: '<p>Besides <em>MOVE</em> & <em>ROTATE</em>, you can also <strong>REVERT</strong> it!</p>',
+  content: '<p style=\"text-align: right;\">Besides <em>MOVE</em> & <em>ROTATE</em>, you can also <strong>REVERT</strong> it!</p>',
   data: {
     x: 850,
-    y: 373,
+    y: 228,
     rotateY: 180,
+    rotateZ: 180,
   }
 }), new step({
   id: 'start-5',
@@ -42,7 +44,7 @@ export const start = [new step({
   id: 'start-6',
   content: '<p>More interesting that it\'s <strong>3D</strong>!!</p>',
   data: {
-    x: -230,
+    x: -160,
     y: 1000,
     z: -5000,
     scale: 0.5,
@@ -51,9 +53,9 @@ export const start = [new step({
   }
 }), new step({
   id: 'start-7',
-  content: '<p>Feel complexity?</p>',
+  content: '<p>Feel complexity ?</p>',
   data: {
-    x: -400,
+    x: -300,
     y: 1000,
     z: -5000,
     scale: 0.5,

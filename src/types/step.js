@@ -26,14 +26,14 @@ export class step {
     let elem = document.createElement('div');
     elem.className = 'step';
     elem.id = this.id;
-    elem.dataset.x = this.data.x;
-    elem.dataset.y = this.data.y;
-    elem.dataset.z = this.data.z;
-    elem.dataset.scale = this.data.scale;
-    elem.dataset.rotate = this.data.rotate;
-    elem.dataset.rotateX = this.data.rotateX;
-    elem.dataset.rotateY = this.data.rotateY;
-    elem.dataset.rotateZ = this.data.rotateZ;
+    elem.dataset.x = this.data.x || 0;
+    elem.dataset.y = this.data.y || 0;
+    elem.dataset.z = this.data.z || 0;
+    elem.dataset.scale = this.data.scale || 1;
+    elem.dataset.rotate = this.data.rotate || '';
+    elem.dataset.rotateX = this.data.rotateX || 0;
+    elem.dataset.rotateY = this.data.rotateY || 0;
+    elem.dataset.rotateZ = this.data.rotateZ || 0;
     elem.innerHTML = this.content;
     
     return elem;

@@ -1,4 +1,4 @@
-import {ADD_SLIDE, DEL_SLIDE, EDIT_STEP, ACTIVE_STEP} from '../actions/actions';
+import {ADD_STEP, DEL_STEP, EDIT_STEP, ACTIVE_STEP} from '../actions/actions';
 import {step} from '../types/step';
 import {start} from '../example/start';
 
@@ -6,18 +6,18 @@ const defaultState = start;
 
 export function slides (state = [...defaultState], action) {
   switch (action.type) {
-    case ADD_SLIDE:
-      return newSlide( state, action.slide);
+    case ADD_STEP:
+      return newStep( state, action.slide);
       
-    case DEL_SLIDE:
-      return deleteSlide( state );
+    case DEL_STEP:
+      return deleteStep( state );
       
     case EDIT_STEP:
       return editStep( state, action.target, action.data);
       
     case ACTIVE_STEP:
-      return updateActive( state, 
-                           action.id);
+      return updateActive( state, action.id);
+      
     default:
       return state;
   }
@@ -51,7 +51,7 @@ function updateActive(_oldState, _id){
 }
 
 // 新增 slide element
-function newSlide(_oldState, _newSlide){
+function newStep(_oldState, _newSlide){
   let _api  = impress();
   let _move = _index++;
   let _step = new step({
@@ -66,7 +66,7 @@ function newSlide(_oldState, _newSlide){
       rotate: parseInt(_newSlide.rotate),
       rotateX: parseInt(_newSlide.rotateX),
       rotateY: parseInt(_newSlide.rotateY),
-      rotateZ: parseInt(_newSlide.rotate),
+      rotateZ: parseInt(_newSlide.rotateZ),
     }
   });
   
@@ -78,7 +78,7 @@ function newSlide(_oldState, _newSlide){
 }
 
 // 刪除 slide element
-function deleteSlide(_oldState){
+function deleteStep(_oldState){
   let _api = impress();
   let _activeStep = _api.getActiveStep();
   let _cur = _oldState.findIndex((s) => s.id === _activeStep.id);
@@ -109,10 +109,10 @@ function editStep(_oldState, target, data){
     _oldState[target][data.name] = data.value;
   else
   {
-    if ( data.name === 'rotate' )
-      _oldState[target].data['rotateZ'] = data.value;
-      
     _oldState[target].data[data.name] = data.value;
+    
+    if ( _oldState[target].data['rotate'] !== _oldState[target].data['rotateZ'] )
+      _oldState[target].data['rotate'] = _oldState[target].data['rotateZ'];
     
     impressingStep(_oldState[target], false);
   }

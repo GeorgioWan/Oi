@@ -1,0 +1,202 @@
+@import 'oi_variables';
+@import 'animate';
+
+/************/
+/** EDITOR **/
+/************/
+
+/** DataPanel **/
+// mixin
+@mixin oi-input-style(){
+  .input-group-addon{
+    color: $font-color;
+    background-color: $sub-color;
+    border: 1px solid $main-color-dark;
+  }
+  input{
+    text-align: center;
+    color: $font-color;
+    background-color: $main-color-dark;
+    border: 0px;
+    &:focus{
+      box-shadow: $box-shadow-input;
+    }
+  }
+}
+// style
+.oi-editpanel{
+  z-index: 99;
+
+  .oi-editpanel-props{
+    position: absolute;
+    top: 15%;
+    right: 0;
+    width: 120px;
+    
+    &.oi-editpanel-editing{
+      animation: slideInRight .3s ease-out forwards;
+    }
+    &.oi-editpanel-not-editing{
+      animation: slideOutRight .5s ease-out forwards;
+    }
+    
+    .panel{
+      border: 0;
+      box-shadow: $box-shadow;
+      background-color: $main-color;
+      //@include color-gradient($main-color, $main-color-light);
+      
+      label{ color: $font-color;}
+      @include oi-input-style();
+    }
+  }
+  
+  .oi-editpanel-content{
+    position: absolute;
+    top: 25%;
+    left: 0;
+    
+    &.oi-editpanel-editing{
+      animation: slideInLeft .3s ease-out forwards;
+    }
+    &.oi-editpanel-not-editing{
+      animation: slideOutLeft .5s ease-out forwards;
+    }
+    
+    .panel{
+      border: 0;
+      box-shadow: $box-shadow;
+      background-color: $main-color;
+      
+      label{ color: $font-color;}
+      .panel-body{ padding: 10px; }
+    }
+  }
+  
+  .oi-divider{
+    border-top: 1px solid $sub-color;
+  }
+}
+.control-label{
+  margin-bottom: 5px;
+}
+
+/***********/
+/** MODAL **/
+/***********/
+.modal-content{
+  background-color: $main-color;
+  color: $font-color;
+  
+  .modal-header{
+    border-bottom: 1px solid $sub-color;
+    button { color: $font-color;}
+  }
+  .modal-footer{
+    border-top: 1px solid $sub-color;
+  }
+  @include oi-input-style();
+}
+
+/*************/
+/** TinyMCE **/
+/*************/
+.oi-tinymce-editor{
+  .mce-panel{
+    background-color: $main-color;
+    border: 0;
+    *, .mce-txt{ color: $font-color; }
+    .mce-menubar{ 
+      border: 1px solid $sub-color; 
+      
+      .mce-caret{ border-top-color: $font-color; }
+    }
+    .mce-btn-group:not(:first-child){ border-left: 1px solid $sub-color; }
+    .mce-btn{
+      background-color: $main-color;
+      
+      .mce-caret{ border-top-color: $font-color; }
+      &.mce-active{
+        background-color: $sub-color;
+        border: 1px solid $main-color-dark;
+      }
+      &:hover, &:focus{
+        background: $main-color-light;
+        border: 1px solid $main-color-dark;
+      }
+    }
+  }
+}
+
+/************/
+/** BUTTON **/
+/************/
+// mixin
+@mixin oi-btn-define($_border, $_color, $_color-light, $_color-dark, $_box-shadow, $_box-shadow-hover){
+  color: $font-color;
+  background-color: $_color;
+  border: $_border;
+  box-shadow: $_box-shadow;
+  // :hover 與 :active (box-shadow, background-color) 時的動畫
+  transition: box-shadow, background-color 0.3s ease;
+  
+  &:hover{
+    color: $font-color-active;
+    background-color: $_color-light;
+    box-shadow: $_box-shadow-hover;
+  }
+  &:active{
+    color: $font-color;
+    background-color: $_color-dark;
+    box-shadow: $_box-shadow;
+  }
+}
+// style
+.oi-btn{
+  z-index: 99;
+  
+  &.oi-btn-o{
+    width: 52px;
+    height: 52px;
+    border-radius: 50px;
+  }
+  &.oi-btn-fill{
+    width: 100%;
+  }
+  &.oi-btn-add{
+    @include oi-btn-define(0, $active-color, $active-color-light, $active-color-dark, $box-shadow, $box-shadow-hover);
+  }
+  &.oi-btn-add-pos{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+  }
+  &.oi-btn-edit{
+    @include oi-btn-define(0, $main-color, $main-color-light, $main-color-dark, $box-shadow, $box-shadow-hover);
+  }
+  &.oi-btn-edit-pos{
+    position: absolute;
+    bottom: 100px;
+    right: 30px;
+  }
+  &.oi-btn-download{
+    @include oi-btn-define(0, $main-color, $main-color-light, $main-color-dark, $box-shadow, $box-shadow-hover);
+  }
+  &.oi-btn-download-pos{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+  }
+  &.oi-btn-del{
+    @include oi-btn-define(1px solid $main-color-dark, $sub-color, $danger-color, $danger-color-dark, $box-shadow, $box-shadow-hover);
+  }
+  &.oi-btn-ctl{
+    @include oi-btn-define(0, $sub-color, $warn-color, $warn-color-dark, $box-shadow, $box-shadow-hover);
+    &.oi-btn-overview{
+      z-index: 999;
+    }
+  }
+  &:focus, &:focus:active{
+    outline: none;
+  }
+}

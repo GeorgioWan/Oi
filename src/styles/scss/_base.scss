@@ -1,3 +1,5 @@
+/*** base style for impress ***/
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -95,7 +97,7 @@ a {
     -o-transition:      opacity 1s;
     transition:         opacity 1s;
     
-    &.active{ opacity: 1 }
+    &.active{ opacity: 1; }
   }
 }
 
@@ -115,6 +117,22 @@ a {
   font-family: 'PT Serif', georgia, serif;
   font-size: 48px;
   line-height: 1.5;
+  
+  
 }
 
 #overview{ display: none; }
+.impress-on-overview .step {
+  opacity: 1;
+}
+
+/*****************/
+/*** Font-Size ***/
+/*****************/
+$_font-size: 48px;
+h1, .h1{ font-size: ($_font-size * 2.6); }
+h2, .h2{ font-size: ($_font-size * 2.15); }
+h3, .h3{ font-size: ($_font-size * 1.7); }
+h4, .h4{ font-size: ($_font-size * 1.3); }
+h5, .h5{ font-size: ($_font-size * 1); }
+h6, .h6{ font-size: ($_font-size * 0.85); }

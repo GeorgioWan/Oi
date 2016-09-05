@@ -15,8 +15,11 @@ export default class TinymceEditor extends Component {
     return (
       <TinyMCE content={content}
                config={{
-                 plugins: 'autolink link image lists print preview textcolor colorpicker',
-                 toolbar: 'undo redo | bold italic forecolor backcolor | alignleft aligncenter alignright | link image',
+                 height: 150,
+                 menubar: 'file edit insert view',
+                 plugins: 'autolink link image lists print preview textcolor colorpicker media',
+                 toolbar1: 'undo redo | styleselect',
+                 toolbar2: 'bold italic forecolor backcolor | alignleft aligncenter alignright | link image media'
                }}
                onChange={this.handleEditorChange.bind(this)}
       />

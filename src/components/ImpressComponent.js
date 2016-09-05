@@ -40,7 +40,7 @@ export default class ImpressComponent extends Component {
     return (
       <div id='impress'>
         <div>
-        <div id='overview' className='step' data-x='0' data-y='0' data-scale='3'></div>
+        <div id='overview' className='step' data-x='0' data-y='0' data-scale='6'></div>
         {
           slides.map((slide, index) => {
             return (

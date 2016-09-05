@@ -1,19 +1,19 @@
-export const ADD_SLIDE = 'ADD_SLIDE';
-export const DEL_SLIDE = 'DEL_SLIDE';
+export const ADD_STEP = 'ADD_STEP';
+export const DEL_STEP = 'DEL_STEP';
 export const EDIT_STEP = 'EDIT_STEP';
 export const ACTIVE_STEP = 'ACTIVE_STEP';
 
 
-export function addSlide(slide) {
+export function addStep(slide) {
   return {
-    type: ADD_SLIDE,
+    type: ADD_STEP,
     slide
   };
 }
 
-export function delSlide() {
+export function delStep() {
   return {
-    type: DEL_SLIDE
+    type: DEL_STEP
   };
 }
 

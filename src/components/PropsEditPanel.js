@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Row, Col, FormGroup, FormControl, ControlLabel, InputGroup} from 'react-bootstrap';
-import TinymceEditor from './TinymceEditor';
+import {Button, ControlLabel} from 'react-bootstrap';
+import PropsItem from './PropsItem';
 
 export default class PropsEditPanel extends Component {
   constructor(props){
@@ -10,46 +10,46 @@ export default class PropsEditPanel extends Component {
     if (this.props.onChange)
       this.props.onChange(e);
   }
+  handleClick(e){
+    if (this.props.onClick)
+      this.props.onClick(e);
+  }
   
   render() {
-    const {data, content} = this.props;
-    const inputGroup = (_title, _name ) => (
-      <FormGroup>
-        <InputGroup>
-          <InputGroup.Addon>{_title}</InputGroup.Addon>
-          <FormControl name={_name}
-                       type={'text'}
-                       componentClass={'input'}
-                       placeholder="Set value here"
-                       onChange={this.handleChange.bind(this)}
-                       value={data[_name] || (_name === 'scale' ? 1 : 0)}/>
-        </InputGroup>
-      </FormGroup>
-    );
+    const {data} = this.props;
     return (
       <form>
-        <Row>
-          <Col md={6}>
-            <ControlLabel>Position & Scale</ControlLabel>
-            { inputGroup('Position X', 'x') }
-            { inputGroup('Position Y', 'y') }
-            { inputGroup('Position Z', 'z') }
-            { inputGroup('Scale Size', 'scale') }
-          </Col>
-          <Col md={6}>
-            <ControlLabel>Rotation</ControlLabel>
-            { inputGroup('Rotation', 'rotate') }
-            { inputGroup('Rotation X', 'rotateX') }
-            { inputGroup('Rotation Y', 'rotateY') }
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12}>
-            <ControlLabel>Content</ControlLabel>
-            <TinymceEditor content={content}
-                           onChange={this.handleChange.bind(this)}/>
-          </Col>
-        </Row>
+        <ControlLabel>Position</ControlLabel>
+        <PropsItem attr={'x'} 
+                   data={data} 
+                   onChange={this.handleChange.bind(this)}/>
+        <PropsItem attr={'y'} 
+                   data={data} 
+                   onChange={this.handleChange.bind(this)}/>
+        <PropsItem attr={'z'} 
+                   data={data} 
+                   onChange={this.handleChange.bind(this)}/>
+        <hr className="oi-divider" />
+        <ControlLabel>Rotation</ControlLabel>
+        <PropsItem title={'x'}
+                   attr={'rotateX'} 
+                   data={data} 
+                   onChange={this.handleChange.bind(this)}/>
+        <PropsItem title={'y'}
+                   attr={'rotateY'} 
+                   data={data} 
+                   onChange={this.handleChange.bind(this)}/>
+        <PropsItem title={'z'}
+                   attr={'rotateZ'} 
+                   data={data} 
+                   onChange={this.handleChange.bind(this)}/>
+        <hr className="oi-divider" />           
+        <ControlLabel>Scale</ControlLabel>
+        <PropsItem attr={'scale'} 
+                   data={data} 
+                   onChange={this.handleChange.bind(this)}/>
+        <hr className="oi-divider" />           
+        <Button name="del" className="oi-btn oi-btn-fill oi-btn-del" onClick={this.handleClick.bind(this)}>DELETE</Button>
       </form>
     );
   }

@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import {Button, Modal} from 'react-bootstrap';
-import PropsEditPanel from './PropsEditPanel';
+import {Button, Modal, Glyphicon} from 'react-bootstrap';
+import PropsNewPanel from './PropsNewPanel';
 
 const defaultSlide = {
   x: 0,
   y: 0,
   z: 0,
   scale:   1,
-  rotate:  0,
+  rotate: 0,
   rotateX: 0,
   rotateY: 0,
+  rotateZ: '',
   content: '<p>Create Your Own Content!</p>'
 };
 
@@ -25,12 +26,16 @@ export default class AddModal extends Component {
     this.setState(defaultSlide);
   }
   handleClick(e){
-    if (e.target.name === 'open')
+    let target = e.target;
+    while( target.nodeName !== 'BUTTON' && target !== document.documentElement)
+      target = target.parentElement;
+      
+    if (target.name === 'open')
       this.setState({show: true});
-    else if (e.target.name === 'add')
+    else if (target.name === 'add')
     {
       let {actions} = this.props;
-      actions.addSlide(this.state);
+      actions.addStep(this.state);
       
       this.initState();
       this.setState({show: false});
@@ -51,7 +56,7 @@ export default class AddModal extends Component {
     const close = () => this.setState({show: false});
     return (
       <span>
-        <Button name="open" onClick={this.handleClick.bind(this)}>ADD</Button>
+        <Button className="oi-btn oi-btn-o oi-btn-add oi-btn-add-pos" name="open" active={false} onClick={this.handleClick.bind(this)}><Glyphicon glyph="plus" /></Button>
         
         <Modal show={this.state.show}
                onHide={close}
@@ -62,21 +67,20 @@ export default class AddModal extends Component {
             <Modal.Title id="contained-modal-title">New Slide</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <PropsEditPanel data={this.state}
-                            content={this.state.content}
-                            onChange={this.handleChange.bind(this)}/>
+            <PropsNewPanel data={this.state}
+                           content={this.state.content}
+                           onChange={this.handleChange.bind(this)}/>
           </Modal.Body>
           <Modal.Footer>
             <Button bsStyle='link' 
-                    bsSize='sm'
                     onClick={close} 
                     style={{color: 'gray'}}>
-              Cancel
+              cancel
             </Button>
             <Button name="add" 
-                    bsStyle='success'
+                    className="oi-btn oi-btn-add"
                     onClick={this.handleClick.bind(this)}>
-              Done!
+              Create!
             </Button>
           </Modal.Footer>
         </Modal>
