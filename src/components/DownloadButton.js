@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, Glyphicon} from 'react-bootstrap';
+import {Button, Glyphicon, Tooltip, OverlayTrigger} from 'react-bootstrap';
 
 import {saveAs} from 'file-saver';
 
@@ -78,10 +78,14 @@ export default class DownloadButton extends Component {
   }
   
   render() {
+    const toolTip = ( <Tooltip id={'downloadTooltip'}>Download your [ Oi ]</Tooltip> );
+    
     return (
-      <Button name="download" className="oi-btn oi-btn-o oi-btn-download oi-btn-download-pos" onClick={this.handleClick.bind(this)}>
-        <Glyphicon glyph="download-alt" />
-      </Button>
+      <OverlayTrigger placement="left" delayShow={800} overlay={toolTip}>
+        <Button name="download" className="oi-btn oi-btn-o oi-btn-download oi-btn-download-pos" onClick={this.handleClick.bind(this)}>
+          <Glyphicon glyph="download-alt" />
+        </Button>
+      </OverlayTrigger>
     );
   }
 }

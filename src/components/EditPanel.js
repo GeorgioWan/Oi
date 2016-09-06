@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Panel, ControlLabel, Button, Glyphicon} from 'react-bootstrap';
+import {Panel, ControlLabel, Button, Glyphicon, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import PropsEditPanel from './PropsEditPanel';
 import TinymceEditor from './TinymceEditor';
 import {step} from '../types/step';
@@ -98,10 +98,13 @@ export default class EditPanel extends Component {
   render() {
     const cur = this.props.slides.find((s) => s.active === true) || 
                 new step({content:'#OVERVIEW'});
+    const toolTip = ( <Tooltip id={'editTooltip'}>Edit Step</Tooltip> );
+    
     return (
       <div className='oi-editpanel'>
-        <Button name="edit" className="oi-btn oi-btn-o oi-btn-edit oi-btn-edit-pos" onClick={this.handleClick.bind(this)}><Glyphicon glyph="edit" /></Button>
-        
+        <OverlayTrigger placement="left" delayShow={800} overlay={toolTip}>
+          <Button name="edit" className="oi-btn oi-btn-o oi-btn-edit oi-btn-edit-pos" onClick={this.handleClick.bind(this)}><Glyphicon glyph="edit" /></Button>
+        </OverlayTrigger>
         <div className={'oi-editpanel-props' + (this.state.isEdit ? ' oi-editpanel-editing' : ' oi-editpanel-not-editing')}>
           <Panel>
             <PropsEditPanel data={cur.data}

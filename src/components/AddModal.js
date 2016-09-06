@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, Modal, Glyphicon} from 'react-bootstrap';
+import {Button, Modal, Glyphicon, Tooltip, OverlayTrigger} from 'react-bootstrap';
 import PropsNewPanel from './PropsNewPanel';
 
 const defaultSlide = {
@@ -54,9 +54,13 @@ export default class AddModal extends Component {
   
   render() {
     const close = () => this.setState({show: false});
+    const toolTip = ( <Tooltip id={'addTooltip'}>Add a new Step</Tooltip> );
+    
     return (
       <span>
-        <Button className="oi-btn oi-btn-o oi-btn-add oi-btn-add-pos" name="open" active={false} onClick={this.handleClick.bind(this)}><Glyphicon glyph="plus" /></Button>
+        <OverlayTrigger placement="left" delayShow={800} overlay={toolTip}>
+          <Button className="oi-btn oi-btn-o oi-btn-add oi-btn-add-pos" name="open" active={false} onClick={this.handleClick.bind(this)}><Glyphicon glyph="plus" /></Button>
+        </OverlayTrigger>
         
         <Modal show={this.state.show}
                onHide={close}
