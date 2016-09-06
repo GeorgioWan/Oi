@@ -31,8 +31,8 @@ export default class PropsNewPanel extends Component {
             <PropsItem attr={'z'} 
                        data={data} 
                        onChange={this.handleChange.bind(this)}/>
-            <ControlLabel>Scale</ControlLabel>                       
-            <PropsItem attr={'scale'}
+            <PropsItem title={'Scale'}
+                       attr={'scale'}
                        data={data} 
                        onChange={this.handleChange.bind(this)}/>
           </Col>
@@ -50,8 +50,8 @@ export default class PropsNewPanel extends Component {
                        attr={'rotateZ'} 
                        data={data} 
                        onChange={this.handleChange.bind(this)}/>
-            <ControlLabel>Slide Card</ControlLabel>
-            <div>
+                       <div className='oi-toggle'>
+              <span>Slide Card</span>
               <Toggle name='slide'
                       defaultChecked={data.slide}
                       onChange={this.handleChange.bind(this)}/>

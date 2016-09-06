@@ -25,7 +25,7 @@
 }
 // style
 .oi-editpanel{
-  z-index: 99;
+  z-index: 999;
 
   .oi-editpanel-props{
     position: absolute;
@@ -44,9 +44,7 @@
       border: 0;
       box-shadow: $box-shadow;
       background-color: $main-color;
-      //@include color-gradient($main-color, $main-color-light);
-      
-      label{ color: $font-color;}
+
       @include oi-input-style();
     }
   }
@@ -67,17 +65,19 @@
       border: 0;
       box-shadow: $box-shadow;
       background-color: $main-color;
-      
-      label{ color: $font-color;}
+
       .panel-body{ padding: 10px; }
     }
   }
   
   .oi-divider{
+    margin-top: 15px;
+    margin-bottom: 15px;
     border-top: 1px solid $sub-color;
   }
 }
 .control-label{
+  color: $font-color;
   margin-bottom: 5px;
 }
 

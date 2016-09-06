@@ -11,14 +11,23 @@ export default class DownloadButton extends Component {
   }
   handleClick(e){
     this.downloadHTML();
+
+    /* export json
+    let exp = JSON.stringify(this.props.slides, null, 2);
+    let blob = new File([exp], {type: 'text/plain;charset=utf-8'});
+    saveAs(blob, 'O-impressive.json');
+    */
+    
+    // parse json to obj
+    //let imp = JSON.parse(exp);
   }
+  
   downloadHTML(){
     let doc = this.createHtmlDoc(document.getElementsByTagName('html')[0]);
     
     let blob = new File(['<!DOCUMENT html>', doc.outerHTML], {type: 'text/plain;charset=utf-8'});
     saveAs(blob, 'O-impressive.html');
   }
-  
   createHtmlDoc(html){
     let doc = document,
         doc_html = doc.createElement('html'), 
