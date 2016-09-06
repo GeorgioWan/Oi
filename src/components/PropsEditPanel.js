@@ -20,11 +20,12 @@ export default class PropsEditPanel extends Component {
   
   render() {
     const {step} = this.props;
+    
     return (
       <form>
         <ControlLabel>Slide Card</ControlLabel>
         <Toggle name='slide'
-                defaultChecked={step.slide}
+                checked={step.slide || false}
                 onChange={this.handleChange.bind(this)}/>
         <hr className="oi-divider" />
         <ControlLabel>Position</ControlLabel>
