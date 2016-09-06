@@ -6,6 +6,8 @@ $main-color-light:   lighten($main-color, 10%) !default;
 $main-color-dark:    darken($main-color, 3.5%) !default;
 
 $sub-color :         #636c73 !default;
+$sub-color-light :   lighten($sub-color, 3.5%) !default;
+$sub-color-dark :    darken($sub-color, 3.5%) !default;
 
 $active-color:       #02a76d !default;
 $active-color-light: lighten($active-color, 3.5%) !default;

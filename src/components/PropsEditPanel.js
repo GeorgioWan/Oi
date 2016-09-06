@@ -24,9 +24,11 @@ export default class PropsEditPanel extends Component {
     return (
       <form>
         <ControlLabel>Slide Card</ControlLabel>
-        <Toggle name='slide'
-                checked={step.slide || false}
-                onChange={this.handleChange.bind(this)}/>
+        <div className='oi-toggle'>
+          <Toggle name='slide'
+                  checked={step.slide || false}
+                  onChange={this.handleChange.bind(this)}/>
+        </div>
         <hr className="oi-divider" />
         <ControlLabel>Position</ControlLabel>
         <PropsItem attr={'x'} 
