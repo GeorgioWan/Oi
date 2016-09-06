@@ -4,6 +4,7 @@ export class step {
   constructor({
     id='',
     active=false,
+    slide=false,
     content='', 
     data={
       x: 0,
@@ -18,13 +19,14 @@ export class step {
   }){
     this.id= id;
     this.active= active;
+    this.slide= slide;
     this.content= content;
     this.data = {...data};
   }
   
   toElement(){
     let elem = document.createElement('div');
-    elem.className = 'step';
+    elem.className = this.slide ? 'step slide' : 'step';
     elem.id = this.id;
     elem.dataset.x = this.data.x || 0;
     elem.dataset.y = this.data.y || 0;

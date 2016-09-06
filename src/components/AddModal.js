@@ -3,6 +3,7 @@ import {Button, Modal, Glyphicon, Tooltip, OverlayTrigger} from 'react-bootstrap
 import PropsNewPanel from './PropsNewPanel';
 
 const defaultSlide = {
+  slide: false,
   x: 0,
   y: 0,
   z: 0,
@@ -46,7 +47,9 @@ export default class AddModal extends Component {
     if (typeof(e) === 'string')
       this.setState({ content: e });
     else
-      this.setState({ [e.target.name]: e.target.value });
+      this.setState({ 
+        [e.target.name]: e.target.name === 'slide' ? e.target.checked : e.target.value 
+      });
   }
   contentChange(content){
     this.setState({content});

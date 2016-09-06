@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+
 import {Row, Col,  ControlLabel} from 'react-bootstrap';
+import Toggle from 'react-toggle';
+
 import TinymceEditor from './TinymceEditor';
 import PropsItem from './PropsItem';
 
-export default class PropsEditPanel extends Component {
+export default class PropsNewPanel extends Component {
   constructor(props){
     super(props);
   }
@@ -47,6 +50,9 @@ export default class PropsEditPanel extends Component {
                        attr={'rotateZ'} 
                        data={data} 
                        onChange={this.handleChange.bind(this)}/>
+            <Toggle name='slide'
+                    defaultChecked={data.slide}
+                    onChange={this.handleChange.bind(this)}/>
           </Col>
         </Row>
         <Row>

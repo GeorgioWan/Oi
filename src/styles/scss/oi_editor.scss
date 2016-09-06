@@ -31,7 +31,7 @@
     position: absolute;
     top: 15%;
     right: 0;
-    width: 120px;
+    width: 130px;
     
     &.oi-editpanel-editing{
       animation: slideInRight .3s ease-out forwards;
@@ -126,6 +126,16 @@
       }
     }
   }
+}
+
+/*************/
+/** TOOLTIP **/
+/*************/
+.tooltip{
+  &.left{
+    .tooltip-arrow{ border-left-color: $main-color-dark; }
+  }
+  .tooltip-inner{ background-color: $main-color-dark; }
 }
 
 /************/

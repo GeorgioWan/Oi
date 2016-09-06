@@ -50,7 +50,7 @@ export default class EditPanel extends Component {
       if (typeof(e) === 'string')
         this.updateState(target, 'content', e);
       else
-        this.updateState(target, e.target.name, e.target.value);
+        this.updateState(target, e.target.name, e.target.name === 'slide' ? e.target.checked : e.target.value);
     }
   }
   handleClick(e){
@@ -107,7 +107,7 @@ export default class EditPanel extends Component {
         </OverlayTrigger>
         <div className={'oi-editpanel-props' + (this.state.isEdit ? ' oi-editpanel-editing' : ' oi-editpanel-not-editing')}>
           <Panel>
-            <PropsEditPanel data={cur.data}
+            <PropsEditPanel step={cur}
                             onChange={this.handleChange.bind(this)}
                             onClick={this.handleClick.bind(this)}/>
           </Panel>

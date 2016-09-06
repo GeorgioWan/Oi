@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+
 import {Button, ControlLabel} from 'react-bootstrap';
+import Toggle from 'react-toggle';
+
 import PropsItem from './PropsItem';
 
 export default class PropsEditPanel extends Component {
@@ -16,37 +19,42 @@ export default class PropsEditPanel extends Component {
   }
   
   render() {
-    const {data} = this.props;
+    const {step} = this.props;
     return (
       <form>
+        <ControlLabel>Slide Card</ControlLabel>
+        <Toggle name='slide'
+                defaultChecked={step.slide}
+                onChange={this.handleChange.bind(this)}/>
+        <hr className="oi-divider" />
         <ControlLabel>Position</ControlLabel>
         <PropsItem attr={'x'} 
-                   data={data} 
+                   data={step.data} 
                    onChange={this.handleChange.bind(this)}/>
         <PropsItem attr={'y'} 
-                   data={data} 
+                   data={step.data} 
                    onChange={this.handleChange.bind(this)}/>
         <PropsItem attr={'z'} 
-                   data={data} 
+                   data={step.data} 
                    onChange={this.handleChange.bind(this)}/>
         <hr className="oi-divider" />
         <ControlLabel>Rotation</ControlLabel>
         <PropsItem title={'x'}
                    attr={'rotateX'} 
-                   data={data} 
+                   data={step.data} 
                    onChange={this.handleChange.bind(this)}/>
         <PropsItem title={'y'}
                    attr={'rotateY'} 
-                   data={data} 
+                   data={step.data} 
                    onChange={this.handleChange.bind(this)}/>
         <PropsItem title={'z'}
                    attr={'rotateZ'} 
-                   data={data} 
+                   data={step.data} 
                    onChange={this.handleChange.bind(this)}/>
         <hr className="oi-divider" />           
         <ControlLabel>Scale</ControlLabel>
         <PropsItem attr={'scale'} 
-                   data={data} 
+                   data={step.data} 
                    onChange={this.handleChange.bind(this)}/>
         <hr className="oi-divider" />           
         <Button name="del" className="oi-btn oi-btn-fill oi-btn-del" onClick={this.handleClick.bind(this)}>DELETE</Button>

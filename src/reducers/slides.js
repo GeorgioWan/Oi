@@ -57,6 +57,7 @@ function newStep(_oldState, _newSlide){
   let _step = new step({
     id: 'o-impress-' + _move,
     active: true,
+    slide: _newSlide.slide,
     content: _newSlide.content,
     data: {
       x: parseInt(_newSlide.x),
@@ -105,7 +106,7 @@ function editStep(_oldState, target, data){
   let _api = impress();
   target = _oldState.findIndex((s) => s === target);
   
-  if (data.name === 'content')
+  if (data.name === 'content' || data.name === 'slide')
     _oldState[target][data.name] = data.value;
   else
   {

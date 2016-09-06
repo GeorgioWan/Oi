@@ -12,6 +12,7 @@ require('./styles/scss/animate.scss');
 require('./styles/scss/oi_variables.scss');
 require('./styles/scss/oi_editor.scss');
 require('./styles/scss/_base.scss');
+require('./styles/scss/react-toggle.scss');
 
 
 // store subscribe

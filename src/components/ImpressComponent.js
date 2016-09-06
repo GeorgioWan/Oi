@@ -42,22 +42,22 @@ export default class ImpressComponent extends Component {
         <div>
         <div id='overview' className='step' data-x='0' data-y='0' data-scale='6'></div>
         {
-          slides.map((slide, index) => {
+          slides.map((step, index) => {
             return (
-              <div className='step' key={index}
-                   id={slide.id}
-                   data-x={slide.data.x || 0}
-                   data-y={slide.data.y || 0} 
-                   data-z={slide.data.z || 0}
-                   data-scale={slide.data.scale || 1}
-                   data-rotate={slide.data.rotate || 0}
-                   data-rotate-x={slide.data.rotateX || 0}
-                   data-rotate-y={slide.data.rotateY || 0}
-                   data-rotate-z={slide.data.rotateZ || slide.data.rotate || 0}
-                   dangerouslySetInnerHTML={{__html: slide.content}}
+              <div className={ step.slide ? 'step slide' : 'step'} key={index}
+                   id={step.id}
+                   data-x={step.data.x || 0}
+                   data-y={step.data.y || 0} 
+                   data-z={step.data.z || 0}
+                   data-scale={step.data.scale || 1}
+                   data-rotate={step.data.rotate || 0}
+                   data-rotate-x={step.data.rotateX || 0}
+                   data-rotate-y={step.data.rotateY || 0}
+                   data-rotate-z={step.data.rotateZ || step.data.rotate || 0}
+                   dangerouslySetInnerHTML={{__html: step.content}}
                    onClick={this.handleClick.bind(this)}
-                   style={{ position: slide.style ? slide.style.position : '',
-                            transform: slide.style ? slide.style.transform : ''
+                   style={{ position: step.style ? step.style.position : '',
+                            transform: step.style ? step.style.transform : ''
                    }}>
               </div>
             );
