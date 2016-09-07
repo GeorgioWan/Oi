@@ -9,6 +9,7 @@ export default class EditPanel extends Component {
     super(props);
     this.state = {
       isEdit: false,
+      isOverview: false,
       //active: '',
       //content: ''
     };
@@ -38,13 +39,21 @@ export default class EditPanel extends Component {
   componentWillReceiveProps(nextProps){
     let target = nextProps.slides.find((s) => s.active === true);
     
-    if (!target)
-      this.setState({isEdit: false});
+    if (target.id === 'overview')
+      this.setState({
+        isEdit: this.state.isEdit,
+        isOverview: true
+      });
+    else
+      this.setState({
+        isEdit: this.state.isEdit,
+        isOverview: false
+      });
   }
   handleChange(e){
     let target = this.props.slides.find((s) => s.active === true) || 
                  new step({id:'overview'});
-    
+    /*
     if (target.id !== 'overview')
     {
       if (typeof(e) === 'string')
@@ -52,6 +61,17 @@ export default class EditPanel extends Component {
       else
         this.updateState(target, e.target.name, e.target.name === 'slide' ? e.target.checked : e.target.value);
     }
+    */
+    
+    if (typeof(e) === 'string')
+    {
+      if (target.id === 'overview')
+        alert('You can\'t edit #OVERVIEW\'s content.');
+      else
+        this.updateState(target, 'content', e);
+    }
+    else
+      this.updateState(target, e.target.name, e.target.name === 'slide' ? e.target.checked : e.target.value);
   }
   handleClick(e){
     let {actions} = this.props;
@@ -64,12 +84,19 @@ export default class EditPanel extends Component {
       actions.delStep();
     else if (target.name === 'edit')
     {
-      let _v = this.props.slides.findIndex((s) => s.active === true);
-      if (_v === -1){
-        alert('Please selecet or create a \'step\' first.');
+      let _v = this.props.slides.find((s) => s.active === true);
+      if (_v.id === 'overview'){
+        //alert('Please selecet or create a \'step\' first.');
+        this.setState({
+          isEdit: !this.state.isEdit,
+          isOverview: true
+        });
       }
       else
-        this.setState({isEdit: !this.state.isEdit});
+        this.setState({
+          isEdit: !this.state.isEdit,
+          isOverview: false
+        });
     }
     /*
     else if (target.name === 'update')
@@ -112,7 +139,7 @@ export default class EditPanel extends Component {
                             onClick={this.handleClick.bind(this)}/>
           </Panel>
         </div>
-        <div className={'oi-editpanel-content' + (this.state.isEdit ? ' oi-editpanel-editing' : ' oi-editpanel-not-editing')}>
+        <div className={'oi-editpanel-content' + ((this.state.isEdit && !this.state.isOverview) ? ' oi-editpanel-editing' : ' oi-editpanel-not-editing')}>
           <Panel>
             <div className='oi-tinymce-editor'>
               <ControlLabel>Content</ControlLabel>
