@@ -1,6 +1,14 @@
 import {step} from '../types/step';
 
 export const start = [new step({
+  id: 'overview',
+  active: true,
+  data: {
+    x: 0,
+    y: 0,
+    scale: 10,
+  }
+}), new step({
   id: 'start',
   content: '<p style=\"text-align: center;\">Hola, Welcome to <strong>[</strong><strong>Oi]</strong></p>',
   data: {

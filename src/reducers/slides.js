@@ -36,7 +36,6 @@ function impressingStep(step, isNew){
 
 // 更新 active 狀態
 function updateActive(_oldState, _id){
-  let _api = impress();
   let newState = new Array();
   
   _oldState.forEach((s) => {
@@ -44,15 +43,11 @@ function updateActive(_oldState, _id){
     newState.push(s);
   });
   
-  if (_id === -1 || _id === 'overview')
-    _api.goto('overview');
-    
   return newState;
 }
 
 // 新增 slide element
 function newStep(_oldState, _newSlide){
-  let _api  = impress();
   let _move = _index++;
   let _step = new step({
     id: 'o-impress-' + _move,
@@ -83,17 +78,18 @@ function deleteStep(_oldState){
   let _api = impress();
   let _activeStep = _api.getActiveStep();
   let _cur = _oldState.findIndex((s) => s.id === _activeStep.id);
-  let _prev = _cur -1;
-  let _impressTarget = _cur + 1; // cus 'slidesData[0]' in impress is 'overview' in this case
+  let _overviewIndex = 0 ;
   
-  if ( _cur === -1 )
-    alert('Sorry, you could not delete #OVERVIEW.');
+  
+  if ( _cur === _overviewIndex )
+    alert('Sorry, you can not delete #OVERVIEW.');
   else
   {
-    _api.delStep(_impressTarget);
+    _api.delStep(_cur);
     
     let _newState = _oldState.filter((value, index) => index !== parseInt((_cur)));
-    let _prevStep = _newState[_prev] ? _newState[_prev].id : -1;
+    let _prev = _cur - 1;
+    let _prevStep = _newState[_prev].id;
     
     return updateActive(_newState, _prevStep);
   }
@@ -107,7 +103,12 @@ function editStep(_oldState, target, data){
   target = _oldState.findIndex((s) => s === target);
   
   if (data.name === 'content' || data.name === 'slide')
-    _oldState[target][data.name] = data.value;
+  {
+    if (target === 0)
+      alert('You can\'t change "'+ data.name + '" attribute of #OVERVIEW');
+    else
+      _oldState[target][data.name] = data.value;
+  }
   else
   {
     _oldState[target].data[data.name] = data.value;

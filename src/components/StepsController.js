@@ -14,7 +14,10 @@ export default class StepsController extends Component {
       target = target.parentElement;
       
     if (target.name === 'overview')
-      actions.activeStep(-1);
+    {
+      _api.goto('overview');
+      actions.activeStep('overview');
+    }
     else 
     {
       if (target.name === 'prev')

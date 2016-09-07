@@ -346,6 +346,7 @@
                 var _del = steps[el];
                 steps = steps.filter((value, index) => index !== parseInt(el));
                 delete stepsData[ 'impress-' + _del.id ];
+
                 steps.length > 0 ? goto(el-1) : goto(0);
             }
         };
@@ -445,13 +446,6 @@
 
         // Used to reset timeout for `impress:stepenter` event
         var stepEnterTimeout = null;
-        
-        // `setTransformationCallback` API function - sets a callback that allows passing the current transformations outside, to the editing tool
-        // via https://github.com/naugtur/builder4impress
-        var transformationCallback = null;
-        var setTransformationCallback = function(callback){
-          transformationCallback=callback;
-        }
 
         // `goto` API function that moves to step given with `el` parameter
         // (by index, id or element), with a transition `duration` optionally
@@ -604,7 +598,7 @@
             var prev = steps.findIndex(function (s) { return s.id === activeStep.id }) - 1;
             prev = prev >= 0 ? steps[ prev ] : steps[ steps.length - 1 ];
             prev = document.getElementById(prev.id);
-
+            
             return goto( prev );
         };
 
@@ -614,7 +608,7 @@
             var next = steps.findIndex(function (s) { return s.id === activeStep.id }) + 1;
             next = next < steps.length ? steps[ next ] : steps[ 0 ];
             next = document.getElementById(next.id);
-
+            
             return goto( next );
         };
 
