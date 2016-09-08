@@ -3,23 +3,34 @@ import {Button, Glyphicon, Tooltip, OverlayTrigger} from 'react-bootstrap';
 
 import {saveAs} from 'file-saver';
 
-import {step} from '../types/step';
-
 export default class DownloadButton extends Component {
   constructor(props){
     super(props);
   }
   handleClick(e){
+    
+    // export as json
+    this.exportJSON();
+    
+    // download as HTML
     this.downloadHTML();
-
-    /* export json
-    let exp = JSON.stringify(this.props.slides, null, 2);
-    let blob = new File([exp], {type: 'text/plain;charset=utf-8'});
-    saveAs(blob, 'O-impressive.json');
-    */
     
     // parse json to obj
     //let imp = JSON.parse(exp);
+  }
+  
+  exportJSON(){
+    let exp = JSON.stringify( this.props.slides, 
+                              (key, value) => {
+                                if (value)
+                                  return value;
+                                else
+                                  return undefined;
+                              }, 
+                              2 // Indent
+                            );
+    let blob = new File([exp], {type: 'text/plain;charset=utf-8'});
+    saveAs(blob, 'O-impressive.json');
   }
   
   downloadHTML(){
@@ -38,12 +49,20 @@ export default class DownloadButton extends Component {
 			
 		charset_meta.setAttribute('charset', html.ownerDocument.characterSet);
 		
-		this.createBody(doc_html, body);
-		
 		let title_text = 'O-impressive Slide';
 		title.appendChild(doc.createTextNode(title_text));
 		
+		this.setStyle(head);
+		
+		this.createBody(doc_html, body);
+		
 		return doc_html;
+  }
+  setStyle(head){
+    let style_font = document.getElementsByTagName('style')[3].cloneNode(true);
+		let style_base = document.getElementsByTagName('style')[4].cloneNode(true);
+		head.appendChild(style_font);
+		head.appendChild(style_base);
   }
   createBody(doc, body){
     body.className = 'impress-not-supported';
@@ -56,21 +75,15 @@ export default class DownloadButton extends Component {
     this.createScript(doc, body);
   }
   createImpressSteps(){
-    let {slides} = this.props;
     let _impress = document.createElement('div');
     _impress.id = 'impress';
     
-    slides.forEach((s) => {
-      _impress.appendChild(s.toElement());
+    this.props.slides.forEach((s) => {
+      if (s.id !== 'overview')
+        _impress.appendChild(s.toElement());
     });
-    let overview = new step({
-      id: 'overview',
-      data: {
-        x: 0,
-        y: 0,
-        scale: 6,
-      }
-    }).toElement();
+    
+    let overview = this.props.slides[0].toElement();
     _impress.appendChild(overview);
     
     return _impress;

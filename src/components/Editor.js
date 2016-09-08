@@ -8,13 +8,8 @@ import DownloadButton from './DownloadButton';
 export default class Editor extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      storyStatus: false
-    };
   }
-  handleChange(e){
-    console.log('good');
-  }
+  
   render() {
     return (
       <div>

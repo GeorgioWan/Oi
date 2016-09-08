@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Boilerplate for ReactJS project with hot code reloading",
   "scripts": {
-    "start": "node server.js",
+    "dev": "node server.js",
+    "start": "node server-express.js",
     "lint": "eslint src"
   },
   "repository": {
@@ -47,6 +48,7 @@
     "webpack-dev-server": "^1.15.1"
   },
   "dependencies": {
+    "express": "^4.14.0",
     "react": "^15.3.1",
     "react-bootstrap": "^0.30.3",
     "react-dom": "^15.3.1",

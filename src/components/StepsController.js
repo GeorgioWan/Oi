@@ -31,7 +31,7 @@ export default class StepsController extends Component {
   
   render() {
     return (
-      <Col md={2} mdOffset={5}>
+      <Col md={3} mdOffset={5}>
         <ButtonToolbar>
           <ButtonGroup>
             <Button name="prev" className='oi-btn oi-btn-ctl' onClick={this.handleClick.bind(this)}>

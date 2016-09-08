@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as allActions from '../actions/actions';
+import * as allActions from '../actions/actionCreator';
 import { ImpressComponent } from '../components';
 
 class Impress extends Component {
