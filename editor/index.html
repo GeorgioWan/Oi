@@ -2,7 +2,546 @@
 <html>
   <head>
     <title>Oh! Impressive! - BETA</title>
+    <meta content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+    <style type="text/css">@import url(https://fonts.googleapis.com/css?family=Oxygen);</style>
+    <style type="text/css">
+    /*** Oi style animate ***/
+    @keyframes slideInLeft {
+      from {
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible; }
+      to {
+        transform: translate3d(0, 0, 0); } }
+
+    @keyframes slideInRight {
+      from {
+        transform: translate3d(100%, 0, 0);
+        visibility: visible; }
+      to {
+        transform: translate3d(0, 0, 0); } }
+
+    @keyframes slideOutLeft {
+      from {
+        transform: translate3d(0, 0, 0); }
+      to {
+        visibility: hidden;
+        transform: translate3d(-100%, 0, 0); } }
+
+    @keyframes slideOutRight {
+      from {
+        transform: translate3d(0, 0, 0); }
+      to {
+        visibility: hidden;
+        transform: translate3d(100%, 0, 0); } }
+
+    /************/
+    /** EDITOR **/
+    /************/
+    /** DataPanel **/
+    .oi-editpanel {
+      z-index: 999; }
+      .oi-editpanel .oi-editpanel-props {
+        position: absolute;
+        top: 15%;
+        right: 0;
+        width: 130px; }
+        .oi-editpanel .oi-editpanel-props.oi-editpanel-editing {
+          animation: slideInRight .3s ease-out forwards; }
+        .oi-editpanel .oi-editpanel-props.oi-editpanel-not-editing {
+          animation: slideOutRight .5s ease-out forwards; }
+        .oi-editpanel .oi-editpanel-props .panel {
+          border: 0;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          background-color: #3e4852; }
+          .oi-editpanel .oi-editpanel-props .panel .input-group-addon {
+            color: rgba(255, 255, 255, 0.8);
+            background-color: #636c73;
+            border: 1px solid #363f48; }
+          .oi-editpanel .oi-editpanel-props .panel input {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            background-color: #363f48;
+            border: 0px; }
+            .oi-editpanel .oi-editpanel-props .panel input:focus {
+              box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(124, 146, 169, 0.6); }
+      .oi-editpanel .oi-editpanel-content {
+        position: absolute;
+        top: 25%;
+        left: 0; }
+        .oi-editpanel .oi-editpanel-content.oi-editpanel-editing {
+          animation: slideInLeft .3s ease-out forwards; }
+        .oi-editpanel .oi-editpanel-content.oi-editpanel-not-editing {
+          animation: slideOutLeft .5s ease-out forwards; }
+        .oi-editpanel .oi-editpanel-content .panel {
+          border: 0;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          background-color: #3e4852; }
+          .oi-editpanel .oi-editpanel-content .panel .panel-body {
+            padding: 10px; }
+      .oi-editpanel .oi-divider {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border-top: 1px solid #636c73; }
+
+    .control-label {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 5px; }
+
+    /***********/
+    /** MODAL **/
+    /***********/
+    .modal-content {
+      background-color: #3e4852;
+      color: rgba(255, 255, 255, 0.8); }
+      .modal-content .modal-header {
+        border-bottom: 1px solid #636c73; }
+        .modal-content .modal-header button {
+          color: rgba(255, 255, 255, 0.8); }
+      .modal-content .modal-footer {
+        border-top: 1px solid #636c73; }
+      .modal-content .input-group-addon {
+        color: rgba(255, 255, 255, 0.8);
+        background-color: #636c73;
+        border: 1px solid #363f48; }
+      .modal-content input {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.8);
+        background-color: #363f48;
+        border: 0px; }
+        .modal-content input:focus {
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(124, 146, 169, 0.6); }
+
+    /*************/
+    /** TinyMCE **/
+    /*************/
+    .oi-tinymce-editor .mce-panel {
+      background-color: #3e4852;
+      border: 0; }
+      .oi-tinymce-editor .mce-panel *, .oi-tinymce-editor .mce-panel .mce-txt {
+        color: rgba(255, 255, 255, 0.8); }
+      .oi-tinymce-editor .mce-panel .mce-menubar {
+        border: 1px solid #636c73; }
+        .oi-tinymce-editor .mce-panel .mce-menubar .mce-caret {
+          border-top-color: rgba(255, 255, 255, 0.8); }
+      .oi-tinymce-editor .mce-panel .mce-btn-group:not(:first-child) {
+        border-left: 1px solid #636c73; }
+      .oi-tinymce-editor .mce-panel .mce-btn {
+        background-color: #3e4852; }
+        .oi-tinymce-editor .mce-panel .mce-btn .mce-caret {
+          border-top-color: rgba(255, 255, 255, 0.8); }
+        .oi-tinymce-editor .mce-panel .mce-btn.mce-active {
+          background-color: #636c73;
+          border: 1px solid #363f48; }
+        .oi-tinymce-editor .mce-panel .mce-btn:hover, .oi-tinymce-editor .mce-panel .mce-btn:focus {
+          background: #54626f;
+          border: 1px solid #363f48; }
+
+    /*************/
+    /** TOOLTIP **/
+    /*************/
+    .tooltip.left .tooltip-arrow {
+      border-left-color: #363f48; }
+
+    .tooltip .tooltip-inner {
+      background-color: #363f48; }
+
+    /************/
+    /** BUTTON **/
+    /************/
+    .oi-btn {
+      z-index: 99; }
+      .oi-btn.oi-btn-o {
+        width: 52px;
+        height: 52px;
+        border-radius: 50px; }
+      .oi-btn.oi-btn-fill {
+        width: 100%; }
+      .oi-btn.oi-btn-add {
+        color: rgba(255, 255, 255, 0.8);
+        background-color: #02a76d;
+        border: 0;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: box-shadow, background-color 0.3s ease; }
+        .oi-btn.oi-btn-add:hover {
+          color: #ffffff;
+          background-color: #02b979;
+          box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+        .oi-btn.oi-btn-add:active {
+          color: rgba(255, 255, 255, 0.8);
+          background-color: #029561;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+      .oi-btn.oi-btn-add-pos {
+        position: absolute;
+        bottom: 30px;
+        right: 30px; }
+      .oi-btn.oi-btn-edit {
+        color: rgba(255, 255, 255, 0.8);
+        background-color: #3e4852;
+        border: 0;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: box-shadow, background-color 0.3s ease; }
+        .oi-btn.oi-btn-edit:hover {
+          color: #ffffff;
+          background-color: #54626f;
+          box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+        .oi-btn.oi-btn-edit:active {
+          color: rgba(255, 255, 255, 0.8);
+          background-color: #363f48;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+      .oi-btn.oi-btn-edit-pos {
+        position: absolute;
+        bottom: 100px;
+        right: 30px; }
+      .oi-btn.oi-btn-download {
+        color: rgba(255, 255, 255, 0.8);
+        background-color: #3e4852;
+        border: 0;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: box-shadow, background-color 0.3s ease; }
+        .oi-btn.oi-btn-download:hover {
+          color: #ffffff;
+          background-color: #54626f;
+          box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+        .oi-btn.oi-btn-download:active {
+          color: rgba(255, 255, 255, 0.8);
+          background-color: #363f48;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+      .oi-btn.oi-btn-download-pos {
+        position: absolute;
+        top: 20px;
+        right: 30px; }
+      .oi-btn.oi-btn-del {
+        color: rgba(255, 255, 255, 0.8);
+        background-color: #636c73;
+        border: 1px solid #363f48;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: box-shadow, background-color 0.3s ease; }
+        .oi-btn.oi-btn-del:hover {
+          color: #ffffff;
+          background-color: #d2482e;
+          box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+        .oi-btn.oi-btn-del:active {
+          color: rgba(255, 255, 255, 0.8);
+          background-color: #a93924;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+      .oi-btn.oi-btn-ctl {
+        color: rgba(255, 255, 255, 0.8);
+        background-color: #636c73;
+        border: 0;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: box-shadow, background-color 0.3s ease; }
+        .oi-btn.oi-btn-ctl:hover {
+          color: #ffffff;
+          background-color: #e5b560;
+          box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+        .oi-btn.oi-btn-ctl:active {
+          color: rgba(255, 255, 255, 0.8);
+          background-color: #e2ae51;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+        .oi-btn.oi-btn-ctl.oi-btn-overview {
+          z-index: 999; }
+      .oi-btn:focus, .oi-btn:focus:active {
+        outline: none; }
+    </style>
+    <style type="text/css">@charset "UTF-8";
+    /*** base style for impress ***/
+    /************/
+    /*** Font ***/
+    /************/
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed,
+    figure, figcaption, footer, header, hgroup,
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline; }
+
+    article, aside, details, figcaption, figure,
+    footer, header, hgroup, menu, nav, section {
+      display: block; }
+
+    body {
+      line-height: 1;
+      font-family: "Oxygen", georgia, "\5FAE\8EDF\6B63\9ED1\9AD4", "sans-serif";
+      min-height: 740px;
+      background: #d7d7d7;
+      background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(#f0f0f0), to(#bebebe));
+      background: -webkit-radial-gradient(#f0f0f0, #bebebe);
+      background: -moz-radial-gradient(#f0f0f0, #bebebe);
+      background: -ms-radial-gradient(#f0f0f0, #bebebe);
+      background: -o-radial-gradient(#f0f0f0, #bebebe);
+      background: radial-gradient(#f0f0f0, #bebebe); }
+
+    ol, ul {
+      list-style: none; }
+
+    blockquote, q {
+      quotes: none; }
+      blockquote:before, blockquote:after, q:before, q:after {
+        content: '';
+        content: none; }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0; }
+
+    /*
+        Now let's bring some text styles back ...
+    */
+    b, strong {
+      font-weight: bold; }
+
+    i, em {
+      font-style: italic; }
+
+    /*
+        ... and give links a nice look.
+    */
+    a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      padding: 0 0.1em;
+      background: #3e4852;
+      border-radius: 0.2em;
+      -webkit-transition: 0.5s;
+      -moz-transition: 0.5s;
+      -ms-transition: 0.5s;
+      -o-transition: 0.5s;
+      transition: 0.5s; }
+      a:hover, a:focus {
+        color: rgba(255, 255, 255, 0.9);
+        background: #54626f;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        text-decoration: none; }
+
+    img {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+    /*
+        step style
+    */
+    .impress-enabled .step {
+      margin: 0;
+      opacity: 0.3;
+      -webkit-transition: opacity 1s;
+      -moz-transition: opacity 1s;
+      -ms-transition: opacity 1s;
+      -o-transition: opacity 1s;
+      transition: opacity 1s; }
+      .impress-enabled .step.active {
+        opacity: 1; }
+
+    .step {
+      cursor: pointer;
+      position: relative;
+      width: 900px;
+      padding: 20px;
+      margin: 20px auto;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box;
+      font-family: "Oxygen", georgia, "\5FAE\8EDF\6B63\9ED1\9AD4", "sans-serif";
+      font-size: 48px;
+      /*****************/
+      /*** Font-Size ***/
+      /*****************/ }
+      .step h1, .step .h1 {
+        font-size: 124.8px; }
+      .step h2, .step .h2 {
+        font-size: 103.2px; }
+      .step h3, .step .h3 {
+        font-size: 81.6px; }
+      .step h4, .step .h4 {
+        font-size: 62.4px; }
+      .step h5, .step .h5 {
+        font-size: 48px; }
+      .step h6, .step .h6 {
+        font-size: 40.8px; }
+
+    /*
+        slide style
+    */
+    .slide {
+      display: block;
+      width: 1000px;
+      height: 700px;
+      padding: 40px 60px;
+      background-color: white;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      color: #666666;
+      text-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+      font-size: 35px;
+      letter-spacing: -1px; }
+      .slide h1, .slide .h1 {
+        font-size: 91px; }
+      .slide h2, .slide .h2 {
+        font-size: 75.25px; }
+      .slide h3, .slide .h3 {
+        font-size: 59.5px; }
+      .slide h4, .slide .h4 {
+        font-size: 45.5px; }
+      .slide h5, .slide .h5 {
+        font-size: 35px; }
+      .slide h6, .slide .h6 {
+        font-size: 29.75px; }
+
+    /*
+        overview
+    */
+    #overview {
+      display: none; }
+
+    .impress-on-overview .step {
+      opacity: 1; }
+    </style>
+    <style type="text/css">
+    .oi-toggle {
+      text-align: center;
+      padding: 10px 0 0 0; }
+      .oi-toggle span {
+        padding-right: 10px;
+        vertical-align: middle; }
+      .oi-toggle .react-toggle {
+        vertical-align: middle; }
+
+    .react-toggle {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      border: 0;
+      padding: 0;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-tap-highlight-color: transparent; }
+      .react-toggle:hover .react-toggle-track {
+        background-color: #54626f; }
+      .react-toggle:active .react-toggle-thumb {
+        -webkit-box-shadow: 0px 0px 5px 5px #3e4852;
+        -moz-box-shadow: 0px 0px 5px 5px #3e4852;
+        box-shadow: 0px 0px 5px 5px #3e4852; }
+
+    .react-toggle-screenreader-only {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px; }
+
+    .react-toggle--disabled {
+      opacity: 0.5;
+      -webkit-transition: opacity 0.25s;
+      transition: opacity 0.25s; }
+
+    .react-toggle-track {
+      width: 50px;
+      height: 24px;
+      padding: 0;
+      border-radius: 30px;
+      background-color: #363f48;
+      -webkit-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      transition: all 0.2s ease; }
+
+    .react-toggle--checked .react-toggle-track {
+      background-color: #02a76d; }
+
+    .react-toggle--checked .react-toggle-track-check {
+      opacity: 1;
+      -webkit-transition: opacity 0.25s ease;
+      -moz-transition: opacity 0.25s ease;
+      transition: opacity 0.25s ease; }
+
+    .react-toggle--checked .react-toggle-track-x {
+      opacity: 0; }
+
+    .react-toggle--checked .react-toggle-thumb {
+      left: 27px;
+      border-color: #02a76d; }
+      .react-toggle--checked .react-toggle-thumb:active {
+        border-color: #636c73; }
+
+    .react-toggle.react-toggle--checked:hover .react-toggle-track {
+      background-color: #02b979; }
+
+    .react-toggle-track-check {
+      position: absolute;
+      width: 14px;
+      height: 10px;
+      top: 0px;
+      bottom: 0px;
+      margin-top: auto;
+      margin-bottom: auto;
+      line-height: 0;
+      left: 8px;
+      opacity: 0;
+      -webkit-transition: opacity 0.25s ease;
+      -moz-transition: opacity 0.25s ease;
+      transition: opacity 0.25s ease; }
+
+    .react-toggle-track-x {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      top: 0px;
+      bottom: 0px;
+      margin-top: auto;
+      margin-bottom: auto;
+      line-height: 0;
+      right: 10px;
+      opacity: 1;
+      -webkit-transition: opacity 0.25s ease;
+      -moz-transition: opacity 0.25s ease;
+      transition: opacity 0.25s ease; }
+
+    .react-toggle-thumb {
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 22px;
+      height: 22px;
+      border: 1px solid #5b6369;
+      border-radius: 50%;
+      background-color: #636c73;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      -webkit-transition: all 0.25s ease;
+      -moz-transition: all 0.25s ease;
+      transition: all 0.25s ease; }
+
+    .react-toggle--focus .react-toggle-thumb {
+      -webkit-box-shadow: 0px 0px 3px 2px #3e4852;
+      -moz-box-shadow: 0px 0px 3px 2px #3e4852;
+      box-shadow: 0px 0px 2px 3px #3e4852;
+      border-color: #636c73; }
+    </style>
   </head>
   <body class='impress-not-supported'>
     
@@ -10,8 +549,8 @@
     <div id='impress-editor'></div>
     
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    <script src="styles/js/impress.js"></script>
-    <script src="dist/bundle.js"></script>
+    <script src="js/impress.js"></script>
+    <script src="bundle.js"></script>
     <script >impress().init();</script>
   </body>
 </html>
