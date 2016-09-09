@@ -1,6 +1,7 @@
 import {ADD_STEP, DEL_STEP, EDIT_STEP, ACTIVE_STEP} from '../actions/actionTypes';
 import {step} from '../types/step';
-import {start} from '../example/start';
+//import {start} from '../example/start';
+import {start} from '../example/demo-start';
 
 const defaultState = start;
 
