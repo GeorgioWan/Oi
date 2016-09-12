@@ -5,8 +5,8 @@ let temp = [
     "id": "overview",
     "data": {
       "x": "3000",
-      "y": "1500",
-      "scale": 10
+      "y": "800",
+      "scale": 9
     },
     "style": {
       "0": "position",

@@ -10,13 +10,10 @@ export default class DownloadButton extends Component {
   handleClick(e){
     
     // export as json
-    this.exportJSON();
+    //this.exportJSON();
     
     // download as HTML
     this.downloadHTML();
-    
-    // parse json to obj
-    //let imp = JSON.parse(exp);
   }
   
   exportJSON(){
@@ -103,7 +100,7 @@ export default class DownloadButton extends Component {
     const toolTip = ( <Tooltip id={'downloadTooltip'}>Download your [ Oi ]</Tooltip> );
     
     return (
-      <OverlayTrigger placement="left" delayShow={800} overlay={toolTip}>
+      <OverlayTrigger placement="bottom" delayShow={800} overlay={toolTip}>
         <Button name="download" className="oi-btn oi-btn-o oi-btn-download oi-btn-download-pos" onClick={this.handleClick.bind(this)}>
           <Glyphicon glyph="download-alt" />
         </Button>

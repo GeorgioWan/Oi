@@ -15,7 +15,7 @@ export default class TinymceEditor extends Component {
     return (
       <TinyMCE content={content}
                config={{
-                 height: 150,
+                 height: 300,
                  menubar: 'file edit insert view',
                  plugins: 'autolink link image lists print preview textcolor colorpicker media',
                  toolbar1: 'undo redo | styleselect',

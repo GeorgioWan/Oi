@@ -137,6 +137,9 @@
   &.left{
     .tooltip-arrow{ border-left-color: $main-color-dark; }
   }
+  &.bottom{
+    .tooltip-arrow{ border-bottom-color: $main-color-dark; }
+  }
   .tooltip-inner{ background-color: $main-color-dark; }
 }
 
@@ -199,6 +202,28 @@
     top: 20px;
     right: 30px;
   }
+  &.oi-btn-import{
+    @include oi-btn-define(0, $primiry-color, $primiry-color-light, $primiry-color-dark, $box-shadow, $box-shadow-hover);
+    position: relative;
+    overflow: hidden;
+    
+    input{
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+      opacity: 0;
+      filter: alpha(opacity=0);
+    }
+  }
+  &.oi-btn-import-pos{
+    position: absolute;
+    top: 20px;
+    right: 100px;
+  }
   &.oi-btn-del{
     @include oi-btn-define(1px solid $main-color-dark, $sub-color, $danger-color, $danger-color-dark, $box-shadow, $box-shadow-hover);
   }
@@ -213,8 +238,9 @@
   }
 }
 
+
 /************/
-/** BUTTON **/
+/** FOOTER **/
 /************/
 .oi-footer{
   position: absolute;
