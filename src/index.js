@@ -1,7 +1,7 @@
 // React
 import React from 'react';
 import {render} from 'react-dom';
-import {Impress, ImpressEditor} from './containers';
+import {ImpressRoot, ImpressEditor, OiFooter} from './containers';
 // redux
 import store from './store';
 // react-redux
@@ -15,13 +15,8 @@ require('./styles/scss/_base.scss');
 require('./styles/scss/react-toggle.scss');
 
 
-// store subscribe
-let unsubscribe = store.subscribe(() => {
-  //console.log(store.getState());
-});
-
 render( <Provider store={store}>
-          <Impress />
+          <ImpressRoot />
         </Provider>,
         document.getElementById('impress-root')
       );
@@ -30,4 +25,8 @@ render( <Provider store={store}>
           <ImpressEditor />
         </Provider>,
         document.getElementById('impress-editor')
+      );
+      
+render( <OiFooter />,
+        document.getElementById('oi-footer')
       );

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as allActions from '../actions/actionCreator';
 import { ImpressComponent } from '../components';
 
-class Impress extends Component {
+class ImpressRoot extends Component {
   render() {
     return (
       <ImpressComponent {...this.props} />
@@ -26,4 +26,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Impress);
+)(ImpressRoot);

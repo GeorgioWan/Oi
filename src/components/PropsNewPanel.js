@@ -39,11 +39,11 @@ export default class PropsNewPanel extends Component {
           <Col md={6}>
             <ControlLabel>Rotation</ControlLabel>
             <PropsItem title={'x'} 
-                       attr={'rotateY'} 
+                       attr={'rotateX'} 
                        data={data} 
                        onChange={this.handleChange.bind(this)}/>
             <PropsItem title={'y'} 
-                       attr={'rotateX'} 
+                       attr={'rotateY'} 
                        data={data} 
                        onChange={this.handleChange.bind(this)}/>
             <PropsItem title={'z'} 
