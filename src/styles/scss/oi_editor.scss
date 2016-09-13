@@ -30,7 +30,7 @@
   z-index: 999;
 
   .oi-editpanel-props{
-    position: absolute;
+    position: fixed;
     top: 15%;
     right: 0;
     width: 130px;
@@ -52,7 +52,7 @@
   }
   
   .oi-editpanel-content{
-    position: absolute;
+    position: fixed;
     top: 25%;
     left: 0;
     
@@ -182,7 +182,7 @@
     @include oi-btn-define(0, $active-color, $active-color-light, $active-color-dark, $box-shadow, $box-shadow-hover);
   }
   &.oi-btn-add-pos{
-    position: absolute;
+    position: fixed;
     bottom: 30px;
     right: 30px;
   }
@@ -190,7 +190,7 @@
     @include oi-btn-define(0, $main-color, $main-color-light, $main-color-dark, $box-shadow, $box-shadow-hover);
   }
   &.oi-btn-edit-pos{
-    position: absolute;
+    position: fixed;
     bottom: 100px;
     right: 30px;
   }
@@ -198,7 +198,7 @@
     @include oi-btn-define(0, $main-color, $main-color-light, $main-color-dark, $box-shadow, $box-shadow-hover);
   }
   &.oi-btn-download-pos{
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 30px;
   }
@@ -220,7 +220,7 @@
     }
   }
   &.oi-btn-import-pos{
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 100px;
   }
@@ -243,7 +243,7 @@
 /** FOOTER **/
 /************/
 .oi-footer{
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   left: 10px;
   iframe, div{ vertical-align: middle; }

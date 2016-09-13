@@ -1,4 +1,4 @@
-import {ADD_STEP, DEL_STEP, EDIT_STEP, ACTIVE_STEP} from '../actions/actionTypes';
+import {ADD_STEP, DEL_STEP, EDIT_STEP, ACTIVE_STEP, IMPORT_SLIDES} from '../actions/actionTypes';
 import {step} from '../types/step';
 //import {start} from '../example/start';
 import {start} from '../example/demo-start';
@@ -8,7 +8,7 @@ const defaultState = start;
 export function slides (state = [...defaultState], action) {
   switch (action.type) {
     case ADD_STEP:
-      return newStep( state, action.slide);
+      return newStep( state, action.step);
       
     case DEL_STEP:
       return deleteStep( state );
@@ -18,6 +18,9 @@ export function slides (state = [...defaultState], action) {
       
     case ACTIVE_STEP:
       return updateActive( state, action.id);
+      
+    case IMPORT_SLIDES:
+      return newSlides( state, action.slides );
       
     default:
       return state;
@@ -48,22 +51,21 @@ function updateActive(_oldState, _id){
 }
 
 // 新增 slide element
-function newStep(_oldState, _newSlide){
+function newStep(_oldState, _newStep){
   let _move = _index++;
   let _step = new step({
-    id: 'o-impress-' + _move,
-    active: true,
-    slide: _newSlide.slide,
-    content: _newSlide.content,
+    id: _newStep.id ? _newStep.id : ('o-impress-' + _move),
+    slide: _newStep.slide,
+    content: _newStep.content,
     data: {
-      x: parseInt(_newSlide.x),
-      y: parseInt(_newSlide.y),
-      z: parseInt(_newSlide.z),
-      scale: parseInt(_newSlide.scale),
-      rotate: parseInt(_newSlide.rotate),
-      rotateX: parseInt(_newSlide.rotateX),
-      rotateY: parseInt(_newSlide.rotateY),
-      rotateZ: parseInt(_newSlide.rotateZ),
+      x: parseInt(_newStep.x),
+      y: parseInt(_newStep.y),
+      z: parseInt(_newStep.z),
+      scale: parseInt(_newStep.scale),
+      rotate: parseInt(_newStep.rotate),
+      rotateX: parseInt(_newStep.rotateX),
+      rotateY: parseInt(_newStep.rotateY),
+      rotateZ: parseInt(_newStep.rotateZ),
     }
   });
   
@@ -121,4 +123,10 @@ function editStep(_oldState, target, data){
   }
   
   return [..._oldState];
+}
+
+function newSlides(_oldState, _newState){
+  let _api = impress();
+  _api.reInitSteps();
+  return updateActive(_newState, 'overview');
 }

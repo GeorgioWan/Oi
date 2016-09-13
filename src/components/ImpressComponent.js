@@ -6,7 +6,7 @@ export default class ImpressComponent extends Component {
     super(props);
   }
   
-  componentDidUpdate(){
+  componentDidUpdate(prevProps){
     this.updateFromImpress();
   }
 
@@ -29,9 +29,14 @@ export default class ImpressComponent extends Component {
   
   updateFromImpress(){
     let _api = impress();
-    let _activeStep = _api.getActiveStep();
+  
+    // update steps in impress.js
+    _api.reInitSteps();
     
-    _api.goto(_activeStep.id);
+    // active the current step
+    let _activeStep = _api.getActiveStep();
+    if (_activeStep)
+      _api.goto(_activeStep.id);
   }
   
   render() {

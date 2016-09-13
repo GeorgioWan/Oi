@@ -1,9 +1,9 @@
 import * as actions from './actionTypes';
 
-export function addStep(slide) {
+export function addStep(step) {
   return {
     type: actions.ADD_STEP,
-    slide
+    step
   };
 }
 
@@ -25,5 +25,12 @@ export function activeStep(id) {
   return {
     type: actions.ACTIVE_STEP,
     id
+  };
+}
+
+export function importSlides(slides) {
+  return {
+    type: actions.IMPORT_SLIDES,
+    slides
   };
 }

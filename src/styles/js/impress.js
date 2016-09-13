@@ -337,7 +337,6 @@
             steps.push(el);
             goto(el);
         };
-        
         var delStep = function ( el ) {
             if (el === 0)
                 console.log(steps);
@@ -350,9 +349,13 @@
                 steps.length > 0 ? goto(el-1) : goto(0);
             }
         };
-        
         var getActiveStep = function(){
             return activeStep;
+        };
+        var reInitSteps = function(){
+            stepsData = {};
+            steps = $$( '.step', root );
+            steps.forEach( initStep );
         };
         
         // `init` API function that initializes (and runs) the presentation.
@@ -690,6 +693,7 @@
             newStep:newStep,
             delStep:delStep,
             getActiveStep:getActiveStep,
+            reInitSteps: reInitSteps,
         } );
 
     };
