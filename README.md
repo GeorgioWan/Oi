@@ -1,5 +1,5 @@
 
-[ Oi ]
+[ Oi ] [![Build Status](https://travis-ci.org/GeorgioWan/Oi.svg?branch=master)](https://travis-ci.org/GeorgioWan/Oi)
 =====================
 
 A WYSIWYG Editor to create slides in impress.js.
@@ -20,13 +20,14 @@ Have a BIG thought and try [**[ Oi ]**](https://georgiowan.github.io/Oi/editor/)
 * **Edit** every step in slides
 * **Delete** step but not the #OVERVIEW
 * **Download** the slides as *HTML* with basic style 
-* **Export** the slides as *JSON*
+* ~~**Export** the slides as *JSON*~~ (Now only download a *HTML* file, but you can import it directly!!)
+* **Import** :tada:
 * The best part is **WYSIWYG** in impress.js
 
 ### Todo..
 
 * Validation of input
-* **Import** 
+* ~~**Import**~~
 * **More theme** to choose (Only basic style for slides from impress.js demo currently)
 * Fix **component re-render** (EditPanel)
 * Improve the **UX/UI** (please help... T^T)
