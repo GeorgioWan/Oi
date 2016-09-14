@@ -1,7 +1,7 @@
 // React
 import React from 'react';
 import {render} from 'react-dom';
-import {ImpressRoot, ImpressEditor, OiFooter} from './containers';
+import {OiMain, ImpressRoot, ImpressEditor, OiFooter} from './containers';
 // redux
 import store from './store';
 // react-redux
@@ -14,6 +14,9 @@ require('./styles/scss/oi_editor.scss');
 require('./styles/scss/_base.scss');
 require('./styles/scss/react-toggle.scss');
 
+render( <OiMain />,
+        document.getElementById('oi-main')
+      );
 
 render( <Provider store={store}>
           <ImpressRoot />

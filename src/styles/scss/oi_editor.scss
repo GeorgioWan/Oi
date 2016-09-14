@@ -3,9 +3,62 @@
 @import 'oi_variables';
 @import 'oi_animate';
 
+/*************/
+/** Oi Main **/
+/*************/
+#oi-body{
+  opacity: 0;
+  visibility: hidden;
+  animation: fadeIn 2s ease 5.5s forwards;
+}
+#oi-loading{
+  height: 100%;
+  background-color: $main-color;
+  
+  animation: rotateOutUpRight 1s ease 5.5s forwards;
+  
+  .oi-loading-title{
+    min-width: 300px;
+    min-height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -50px;
+    line-height: 100px;
+    text-align: center;
+    
+    .oi-loading-welcome{
+      display: inline-block;
+      color: rgba(255,255,255,.3);
+      font-size: 30px;
+      margin-right: 10px;
+      animation: fadeInLeft .63s ease forwards;
+    }
+    .oi-loading-oi{
+      display: inline-block;
+      color: rgba(255,255,255, .8);
+      font-size: 50px;
+      opacity: 0;
+      animation: flipInX .8s ease .6s forwards;
+      b{animation: oiLoading 1s linear .8s infinite alternate;}
+    }
+  }
+}
+
+
 /************/
 /** EDITOR **/
 /************/
+
+/** StepsController **/
+#oi-steps-controller{
+  width: 234px;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  margin-left: -117px;
+}
 
 /** DataPanel **/
 // mixin
@@ -228,7 +281,7 @@
     @include oi-btn-define(1px solid $main-color-dark, $sub-color, $danger-color, $danger-color-dark, $box-shadow, $box-shadow-hover);
   }
   &.oi-btn-ctl{
-    @include oi-btn-define(0, $sub-color, $warn-color, $warn-color-dark, $box-shadow, $box-shadow-hover);
+    @include oi-btn-define(0, $sub-color, $warn-color, $warn-color-dark, $box-shadow-top, $box-shadow-top-hover);
     &.oi-btn-overview{
       z-index: 999;
     }
@@ -247,10 +300,13 @@
   bottom: 10px;
   left: 10px;
   iframe, div{ vertical-align: middle; }
+  iframe{
+    margin-right: 5px;
+  }
   div{
     font-size: 12px;
-    color: #636c73;
+    color: $font-color;
     margin-bottom: 5px;
     i{color: #d2482e;}
-  } 
+  }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Col, ButtonToolbar, ButtonGroup, Button, Glyphicon} from 'react-bootstrap';
+import {ButtonToolbar, ButtonGroup, Button, Glyphicon} from 'react-bootstrap';
 
 export default class StepsController extends Component {
   constructor(props){
@@ -31,7 +31,7 @@ export default class StepsController extends Component {
   
   render() {
     return (
-      <Col md={3} mdOffset={5}>
+      <div id='oi-steps-controller'>
         <ButtonToolbar>
           <ButtonGroup>
             <Button name="prev" className='oi-btn oi-btn-ctl' onClick={this.handleClick.bind(this)}>
@@ -45,7 +45,7 @@ export default class StepsController extends Component {
             </Button>
           </ButtonGroup>
         </ButtonToolbar>
-      </Col>
+      </div>
     );
   }
 }

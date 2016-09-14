@@ -1,11 +1,80 @@
-/*** Oi style animate ***/
+/*** Oi style animate via Animate.css ***/
 
+/*************/
+/** LOADING **/
+/*************/
+@keyframes oiLoading {
+  from {
+    opacity: .9;
+  }
+  to {
+    opacity: .3;
+  }
+}
+@keyframes fadeInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    opacity: 0;
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes flipInX {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    opacity: 1;
+  }
+  to {
+    transform: perspective(400px);
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    visibility: visible;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@keyframes rotateOutUpRight {
+  from {
+    transform-origin: right bottom;
+    opacity: 1;
+  }
+  to {
+    transform-origin: right bottom;
+    transform: rotate3d(0, 0, 1, 90deg);
+    opacity: 0;
+  }
+}
+
+/************/
+/** EDITOR **/
+/************/
 @keyframes slideInLeft {
   from {
     transform: translate3d(-100%, 0, 0);
     visibility: visible;
   }
-
   to {
     transform: translate3d(0, 0, 0);
   }
@@ -15,7 +84,6 @@
     transform: translate3d(100%, 0, 0);
     visibility: visible;
   }
-
   to {
     transform: translate3d(0, 0, 0);
   }
@@ -25,7 +93,6 @@
   from {
     transform: translate3d(0, 0, 0);
   }
-
   to {
     visibility: hidden;
     transform: translate3d(-100%, 0, 0);
@@ -35,7 +102,6 @@
   from {
     transform: translate3d(0, 0, 0);
   }
-
   to {
     visibility: hidden;
     transform: translate3d(100%, 0, 0);

@@ -30,6 +30,7 @@ $danger-color-dark:  darken($danger-color, 10%) !default;
 $font-color:         rgba(255,255,255,.8) !default;
 $font-color-active:  #ffffff !default;
 
+
 @mixin color-gradient($_from, $_to){
   background: linear-gradient(270deg, $_from, $_to);
   background-size: 400% 400%;
@@ -60,4 +61,6 @@ $font-color-active:  #ffffff !default;
 /**************/
 $box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 $box-shadow-hover: 0 8px 18px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+$box-shadow-top: 0 -2px 8px 0 rgba(0, 0, 0, 0.2), 0 -4px 20px 0 rgba(0, 0, 0, 0.19);
+$box-shadow-top-hover: 0 -4px 18px 0 rgba(0, 0, 0, 0.2), 0 -4px 20px 0 rgba(0, 0, 0, 0.19);
 $box-shadow-input: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(124,146,169,.6);
