@@ -27,8 +27,6 @@ export function slides (state = [...defaultState], action) {
   }
 }
 
-let _index = 1;
-
 // 將 element init 成 impress step，並填回 style
 function impressingStep(step, isNew){
   let _api = impress();
@@ -52,7 +50,7 @@ function updateActive(_oldState, _id){
 
 // 新增 slide element
 function newStep(_oldState, _newStep){
-  let _move = _index++;
+  let _move = new Date().getTime().toString();
   let _step = new step({
     id: _newStep.id ? _newStep.id : ('o-impress-' + _move),
     slide: _newStep.slide,
