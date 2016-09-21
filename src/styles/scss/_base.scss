@@ -7,6 +7,7 @@
 $_font-family: 'Oxygen', georgia, '微軟正黑體', 'sans-serif';
 $_font-size: 48px;
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -72,23 +73,25 @@ i, em { font-style: italic }
 /*
     ... and give links a nice look.
 */
-a {
-  color: rgba(255,255,255,0.8);
-  text-decoration: none;
-  padding: 0 0.1em;
-  background: #3e4852;
-  border-radius: 0.2em;
-
-  -webkit-transition: 0.5s;
-  -moz-transition:    0.5s;
-  -ms-transition:     0.5s;
-  -o-transition:      0.5s;
-  transition:         0.5s;
-  &:hover, &:focus {
-    color: rgba(255,255,255,0.9);
-    background: #54626f;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-decoration:none;
+.step{
+  a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    padding: 0 0.1em;
+    background: #3e4852;
+    border-radius: 0.2em;
+  
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+    &:hover, &:focus {
+      color: rgba(255,255,255,0.9);
+      background: #54626f;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      text-decoration:none;
+    }
   }
 }
 

@@ -23,6 +23,36 @@ export default class AddModal extends Component {
       ...defaultSlide
     };
   }
+  componentDidMount(){
+    let {addSteps} = this.props;
+    
+    addSteps([
+      {
+        text: 'First, you need to Add a new <b style="color: #e5b560">STEP</b> !',
+        selector: '.oi-btn-add',
+        position: 'top',
+        type: 'hover',
+        style: {
+          backgroundColor: '#3e4852',
+          borderRadius: 0,
+          color: 'rgba(255,255,255,.8)',
+          mainColor: '#a94442',
+          beacon: {
+            offsetX: -30,
+            offsetY: -30,
+            inner: '#a94442',
+            outer: '#a94442'
+          },
+          skip: {
+            color: 'rgba(255,255,255,.3)',
+            fontSize: '13px'
+          },
+          width: '25rem'
+        }
+      }
+    ]);
+  }
+  
   initState(){
     this.setState(defaultSlide);
   }
@@ -71,7 +101,7 @@ export default class AddModal extends Component {
                enforceFocus={false}
                aria-labelledby="contained-modal-title">
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title">New Slide</Modal.Title>
+            <Modal.Title id="contained-modal-title">New Step</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <PropsNewPanel data={this.state}

@@ -10,32 +10,34 @@ export default class EditPanel extends Component {
     this.state = {
       isEdit: false,
       isOverview: false,
-      //active: '',
-      //content: ''
     };
   }
-  /*
-  componentWillMount(){
-    let target = this.props.slides.find((s) => s.active === true) || 
-                 new step({id:'overview', content:'#OVERVIEW'});
-    this.setState({
-      active: target.id,
-      content: target.content
-    });
-  }
-  componentWillReceiveProps(nextProps){
-    let np = nextProps.slides.find((s) => s.active === true) || 
-             new step({id:'overview', content:'#OVERVIEW'});
+  componentDidMount(){
+    let {addSteps} = this.props;
     
-    if (this.state.active !== np.id)
-    {
-      this.state.active = np.id;
-      this.setState({
-        active: np.id,
-        content: np.content
-      });
-    }
-  }*/
+    addSteps([
+      {
+        text: 'Then you can Edit current STEP\'s <b style="color: #e5b560">Position</b>, <b style="color: #e5b560">Rotation</b> or <b style="color: #e5b560">Content</b> ... etc',
+        selector: '.oi-btn-edit',
+        position: 'top',
+        style: {
+          backgroundColor: '#3e4852',
+          borderRadius: 0,
+          color: 'rgba(255,255,255,.8)',
+          mainColor: '#a94442',
+          beacon: {
+            inner: '#a94442',
+            outer: '#a94442'
+          },
+          skip: {
+            color: 'rgba(255,255,255,.3)',
+            fontSize: '13px'
+          },
+          width: '35rem'
+        }
+      }
+    ]);
+  }
   componentWillReceiveProps(nextProps){
     let target = nextProps.slides.find((s) => s.active === true);
     

@@ -6,6 +6,31 @@ export default class ImportButton extends Component {
   constructor(props){
     super(props);
   }
+  componentDidMount(){
+    let {addSteps} = this.props;
+    
+    addSteps([
+      {
+        text: 'The last thing, you can also Import <b style="color: #e5b560">[ Oi ]</b> SLIDE from local, have fun <i class="glyphicon glyphicon-heart"></i>',
+        selector: '.oi-btn-import',
+        position: 'bottom',
+        style: {
+          backgroundColor: '#3e4852',
+          borderRadius: 0,
+          color: 'rgba(255,255,255,.8)',
+          mainColor: '#a94442',
+          beacon: {
+            inner: '#a94442',
+            outer: '#a94442'
+          },
+          skip: {
+            display: 'none'
+          },
+          width: '35rem'
+        }
+      }
+    ]);
+  }
   handleChange(e){
     this.importFile(e.target);
   }
