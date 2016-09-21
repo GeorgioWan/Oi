@@ -38,12 +38,12 @@ body{
   font-family: $_font-family;
   min-height: 740px;
   background: rgb(215, 215, 215);
-  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(125, 135, 150)));
-  background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(125, 135, 150));
-  background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(125, 135, 150));
-  background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(125, 135, 150));
-  background:      -o-radial-gradient(rgb(240, 240, 240), rgb(125, 135, 150));
-  background:         radial-gradient(rgb(240, 240, 240), rgb(125, 135, 150));
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(155, 165, 175)));
+  background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(155, 165, 175));
+  background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(155, 165, 175));
+  background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(155, 165, 175));
+  background:      -o-radial-gradient(rgb(240, 240, 240), rgb(155, 165, 175));
+  background:         radial-gradient(rgb(240, 240, 240), rgb(155, 165, 175));
 }
 
 ol, ul {

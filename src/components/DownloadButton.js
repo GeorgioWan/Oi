@@ -56,8 +56,8 @@ export default class DownloadButton extends Component {
 		return doc_html;
   }
   setStyle(head){
-    let style_font = document.getElementsByTagName('style')[3].cloneNode(true);
-		let style_base = document.getElementsByTagName('style')[4].cloneNode(true);
+    let style_font = document.getElementsByTagName('style')[1].cloneNode(true);
+		let style_base = document.getElementsByTagName('style')[2].cloneNode(true);
 		head.appendChild(style_font);
 		head.appendChild(style_base);
   }

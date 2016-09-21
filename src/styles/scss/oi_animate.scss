@@ -5,10 +5,13 @@
 /*************/
 @keyframes oiLoading {
   from {
-    opacity: .9;
+    //opacity: .3;
+    color: rgba(255,255,255, .3);
   }
   to {
-    opacity: .3;
+    //opacity: .8;
+    color: rgba(255,255,255, .8);
+    text-shadow: 0px 0px 20px rgba(255,255,255, .8);
   }
 }
 @keyframes fadeInLeft {
@@ -55,14 +58,16 @@
     visibility: visible;
   }
 }
-@keyframes rotateOutUpRight {
+@keyframes flipOutY {
   from {
-    transform-origin: right bottom;
+    transform: perspective(400px);
+  }
+  30% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
     opacity: 1;
   }
   to {
-    transform-origin: right bottom;
-    transform: rotate3d(0, 0, 1, 90deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
     opacity: 0;
   }
 }

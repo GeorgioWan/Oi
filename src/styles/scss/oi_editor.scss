@@ -9,13 +9,13 @@
 #oi-body{
   opacity: 0;
   visibility: hidden;
-  animation: fadeIn 2s ease 5.5s forwards;
+  animation: fadeIn 2s ease 5.8s forwards;
 }
 #oi-loading{
   height: 100%;
   background-color: $main-color;
   
-  animation: rotateOutUpRight 1s ease 5.5s forwards;
+  animation: flipOutY 1s ease 5.5s forwards;
   
   .oi-loading-title{
     min-width: 300px;
@@ -33,15 +33,18 @@
       color: rgba(255,255,255,.3);
       font-size: 30px;
       margin-right: 10px;
-      animation: fadeInLeft .63s ease forwards;
+      animation: fadeInLeft .5s ease forwards;
     }
     .oi-loading-oi{
       display: inline-block;
       color: rgba(255,255,255, .8);
       font-size: 50px;
       opacity: 0;
-      animation: flipInX .8s ease .6s forwards;
-      b{animation: oiLoading 1s linear .8s infinite alternate;}
+      animation: flipInX .8s ease .5s forwards;
+      b{ 
+        color: rgba(255,255,255, .3);
+        animation: oiLoading .7s linear 1.2s 6 alternate;
+      }
     }
   }
 }
