@@ -142,6 +142,11 @@
   color: $font-color;
   margin-bottom: 5px;
 }
+.oi-question-slidecard{
+  margin-left: 5px;
+  color: $warn-color;
+  cursor: help;
+}
 
 /***********/
 /** MODAL **/

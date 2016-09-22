@@ -18,7 +18,7 @@ export default class EditPanel extends Component {
     setTimeout(() => {
       addSteps([
         {
-          text: 'Then you can Edit current STEP\'s <b style="color: #e5b560">Position</b>, <b style="color: #e5b560">Rotation</b> or <b style="color: #e5b560">Content</b> ... etc',
+          text: 'Then, you can toggle Edit Panel to edit current STEP\'s <b style="color: #e5b560">Position</b>, <b style="color: #e5b560">Rotation</b>, <b style="color: #e5b560">Content</b>, etc.',
           selector: '.oi-btn-edit',
           position: 'top',
           style: {
@@ -34,10 +34,11 @@ export default class EditPanel extends Component {
               color: 'rgba(255,255,255,.3)',
               fontSize: '13px'
             },
-            width: '35rem'
+            width: '43rem'
           }
         }
       ]);
+      
     }, 6100);
   }
   componentWillReceiveProps(nextProps){

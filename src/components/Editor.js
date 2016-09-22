@@ -22,6 +22,25 @@ export default class Editor extends Component {
         ready: true
       });
     }, 6000);
+    
+    // add tooltip
+    setTimeout(() => {
+      this.addTooltip(
+        {
+          text: 'Set your STEP to <b style="color: #e5b560">NORMAL TYPE</b> or <b style="color: #e5b560">SLIDE CARD TYPE</b>.',
+          selector: '.oi-question-slidecard',
+          position: 'top',
+          event: 'hover',
+          style: {
+            backgroundColor: '#3e4852',
+            borderRadius: 0,
+            color: 'rgba(255,255,255,.8)',
+            mainColor: '#a94442',
+            width: '30rem'
+          }
+        }
+      );
+    }, 6200);
   }
   
   componentDidUpdate (prevProps, prevState) {
@@ -54,7 +73,6 @@ export default class Editor extends Component {
   
   // callback for joyride
   callback(data) {
-    console.log(data);
     if (data.type === 'finished')
     {
       this.props.actions.activeStep(1);

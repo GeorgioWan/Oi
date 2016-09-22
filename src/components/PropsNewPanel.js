@@ -21,7 +21,7 @@ export default class PropsNewPanel extends Component {
       <form>
         <Row>
           <Col md={6}>
-            <ControlLabel>Position</ControlLabel>
+            <ControlLabel>Position & Scale</ControlLabel>
             <PropsItem attr={'x'} 
                        data={data} 
                        onChange={this.handleChange.bind(this)}/>

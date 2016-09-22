@@ -24,6 +24,7 @@ export default class PropsEditPanel extends Component {
     return (
       <form>
         <ControlLabel>Slide Card</ControlLabel>
+        <i className="oi-question-slidecard glyphicon glyphicon-question-sign"></i>
         <div className='oi-toggle'>
           <Toggle name='slide'
                   checked={step.slide || false}
