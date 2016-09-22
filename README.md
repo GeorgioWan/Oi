@@ -23,6 +23,7 @@ Have a BIG thought and try [**[ Oi ]**](https://georgiowan.github.io/Oi/editor/)
 * ~~**Export** the slides as *JSON*~~ (Now only download a *HTML* file, but you can import it directly!!)
 * **Import** :tada:
 * The best part is **WYSIWYG** in impress.js
+* Easy **guided tours**
 
 ### Todo..
 
@@ -72,5 +73,6 @@ You can develop **[ Oi ]** with [redux-devtools-extension](https://github.com/za
 
 ### Others
 
-* [TinyMCE](https://github.com/instructure-react/react-tinymce)
+* [TinyMCE](https://github.com/instructure-react/react-tinymce) - **[ Oi ]** current HTML editor.
 * [react-bootstrap](http://react-bootstrap.github.io/)
+* [react-joyride](https://github.com/gilbarbara/react-joyride) - Guided tours for **[ Oi ]**.
