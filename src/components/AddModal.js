@@ -26,31 +26,31 @@ export default class AddModal extends Component {
   componentDidMount(){
     let {addSteps} = this.props;
     
-    addSteps([
-      {
-        text: 'First, you need to Add a new <b style="color: #e5b560">STEP</b> !',
-        selector: '.oi-btn-add',
-        position: 'top',
-        type: 'hover',
-        style: {
-          backgroundColor: '#3e4852',
-          borderRadius: 0,
-          color: 'rgba(255,255,255,.8)',
-          mainColor: '#a94442',
-          beacon: {
-            offsetX: -30,
-            offsetY: -30,
-            inner: '#a94442',
-            outer: '#a94442'
-          },
-          skip: {
-            color: 'rgba(255,255,255,.3)',
-            fontSize: '13px'
-          },
-          width: '25rem'
+    setTimeout(() => {
+      addSteps([
+        {
+          text: 'First, you need to Add a new <b style="color: #e5b560">STEP</b> !',
+          selector: '.oi-btn-add',
+          position: 'top',
+          type: 'hover',
+          style: {
+            backgroundColor: '#3e4852',
+            borderRadius: 0,
+            color: 'rgba(255,255,255,.8)',
+            mainColor: '#a94442',
+            beacon: {
+              inner: '#a94442',
+              outer: '#a94442'
+            },
+            skip: {
+              color: 'rgba(255,255,255,.3)',
+              fontSize: '13px'
+            },
+            width: '25rem'
+          }
         }
-      }
-    ]);
+      ]);
+    }, 6100);
   }
   
   initState(){

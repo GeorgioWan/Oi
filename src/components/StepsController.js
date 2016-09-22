@@ -8,28 +8,31 @@ export default class StepsController extends Component {
   componentDidMount(){
     let {addSteps} = this.props;
     
-    addSteps([
-      {
-        text: 'And you can contorl the CAMERA with <ul style="margin: 5px 0 0 30px;"><li><b style="color: #e5b560">Prev</b> - Back to the PREVIOUS step</li><li><b style="color: #e5b560">Next</b> - Go to the NEXT step</li><li><b style="color: #e5b560">OVERVIEW</b> - Jump to the step of OVERVIEW</li>',
-        selector: '#oi-steps-controller',
-        position: 'top',
-        style: {
-          backgroundColor: '#3e4852',
-          borderRadius: 0,
-          color: 'rgba(255,255,255,.8)',
-          mainColor: '#a94442',
-          beacon: {
-            inner: '#a94442',
-            outer: '#a94442'
-          },
-          skip: {
-            color: 'rgba(255,255,255,.3)',
-            fontSize: '13px'
-          },
-          width: '30rem'
+    setTimeout(() => {
+      addSteps([
+        {
+          text: 'And you can contorl the CAMERA with <ul style="margin: 5px 0 0 30px;"><li><b style="color: #e5b560">Prev</b> - Back to the PREVIOUS step</li><li><b style="color: #e5b560">Next</b> - Go to the NEXT step</li><li><b style="color: #e5b560">OVERVIEW</b> - Jump to the step of OVERVIEW</li>',
+          selector: '#oi-steps-controller',
+          position: 'top',
+          style: {
+            backgroundColor: '#3e4852',
+            borderRadius: 0,
+            color: 'rgba(255,255,255,.8)',
+            mainColor: '#a94442',
+            beacon: {
+              inner: '#a94442',
+              outer: '#a94442'
+            },
+            skip: {
+              color: 'rgba(255,255,255,.3)',
+              fontSize: '13px'
+            },
+            width: '30rem'
+          }
         }
-      }
-    ]);
+      ]);
+    }, 6100);
+    
   }
   
   handleClick(e){

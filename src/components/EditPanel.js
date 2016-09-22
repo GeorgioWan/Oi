@@ -15,28 +15,30 @@ export default class EditPanel extends Component {
   componentDidMount(){
     let {addSteps} = this.props;
     
-    addSteps([
-      {
-        text: 'Then you can Edit current STEP\'s <b style="color: #e5b560">Position</b>, <b style="color: #e5b560">Rotation</b> or <b style="color: #e5b560">Content</b> ... etc',
-        selector: '.oi-btn-edit',
-        position: 'top',
-        style: {
-          backgroundColor: '#3e4852',
-          borderRadius: 0,
-          color: 'rgba(255,255,255,.8)',
-          mainColor: '#a94442',
-          beacon: {
-            inner: '#a94442',
-            outer: '#a94442'
-          },
-          skip: {
-            color: 'rgba(255,255,255,.3)',
-            fontSize: '13px'
-          },
-          width: '35rem'
+    setTimeout(() => {
+      addSteps([
+        {
+          text: 'Then you can Edit current STEP\'s <b style="color: #e5b560">Position</b>, <b style="color: #e5b560">Rotation</b> or <b style="color: #e5b560">Content</b> ... etc',
+          selector: '.oi-btn-edit',
+          position: 'top',
+          style: {
+            backgroundColor: '#3e4852',
+            borderRadius: 0,
+            color: 'rgba(255,255,255,.8)',
+            mainColor: '#a94442',
+            beacon: {
+              inner: '#a94442',
+              outer: '#a94442'
+            },
+            skip: {
+              color: 'rgba(255,255,255,.3)',
+              fontSize: '13px'
+            },
+            width: '35rem'
+          }
         }
-      }
-    ]);
+      ]);
+    }, 6100);
   }
   componentWillReceiveProps(nextProps){
     let target = nextProps.slides.find((s) => s.active === true);
@@ -55,15 +57,6 @@ export default class EditPanel extends Component {
   handleChange(e){
     let target = this.props.slides.find((s) => s.active === true) || 
                  new step({id:'overview'});
-    /*
-    if (target.id !== 'overview')
-    {
-      if (typeof(e) === 'string')
-        this.updateState(target, 'content', e);
-      else
-        this.updateState(target, e.target.name, e.target.name === 'slide' ? e.target.checked : e.target.value);
-    }
-    */
     
     if (typeof(e) === 'string')
     {
@@ -88,7 +81,6 @@ export default class EditPanel extends Component {
     {
       let _v = this.props.slides.find((s) => s.active === true);
       if (_v.id === 'overview'){
-        //alert('Please selecet or create a \'step\' first.');
         this.setState({
           isEdit: !this.state.isEdit,
           isOverview: true
@@ -100,27 +92,11 @@ export default class EditPanel extends Component {
           isOverview: false
         });
     }
-    /*
-    else if (target.name === 'update')
-    {
-      let _target = this.props.slides.find((s) => s.active === true);
-      
-      if (_target)
-        actions.editStep(_target, {name: 'content', value: this.state.content});
-      else
-        alert('You can\'t edit #OVERVIEW');
-    }
-    */
   }
   
   updateState(target, name, value){
     const {actions} = this.props;
-    /*
-    if (name === 'content')
-      this.setState({content: value});
-    else
-      actions.editStep(target, {name: name, value: value});
-    */
+    
     actions.editStep(target, {name: name, value: value});
   }
   

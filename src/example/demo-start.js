@@ -72,7 +72,7 @@ let temp = [
   },
   {
     "id": "start-4",
-    "content": "<h4 style=\"text-align: center;\">&nbsp;這裡是...&nbsp;</h4>\n<h1 style=\"text-align: center;\"><strong>[Oi]</strong></h1>\n<h6 style=\"text-align: center;\">&nbsp;</h6>\n<h6 style=\"text-align: center;\">&nbsp;- 創造讓人印象深刻的投影片編輯器 -</h6>",
+    "content": "<h4 style=\"text-align: center;\">&nbsp;歡迎使用&nbsp;</h4>\n<h1 style=\"text-align: center;\"><strong>[Oi]</strong></h1>\n<h6 style=\"text-align: center;\">&nbsp;</h6>\n<h6 style=\"text-align: center;\">&nbsp;- 創造讓人印象深刻的投影片編輯器 -</h6>",
     "data": {
       "y": "-300",
       "scale": 4

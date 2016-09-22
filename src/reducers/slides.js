@@ -27,6 +27,12 @@ export function slides (state = [...defaultState], action) {
   }
 }
 
+function getID( state, id ){
+  if (typeof id === 'number')
+    id = id < 0 ? state[ state.length + id ].id : state[ id ].id;
+  return id;
+}
+
 // 將 element init 成 impress step，並填回 style
 function impressingStep(step, isNew){
   let _api = impress();
@@ -39,6 +45,7 @@ function impressingStep(step, isNew){
 // 更新 active 狀態
 function updateActive(_oldState, _id){
   let newState = new Array();
+  _id = getID(_oldState, _id);
   
   _oldState.forEach((s) => {
     s.active = s.id === _id ? true : false;

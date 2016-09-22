@@ -12,20 +12,25 @@ export default class Editor extends Component {
   constructor(props){
     super(props);
     this.state = {
-      steps: []
+      steps: [],
+      ready: false
     };
   }
   componentDidMount(){
-    this.refs.joyride.start();
+    setTimeout(() => {
+      this.setState({
+        ready: true
+      });
+    }, 6000);
   }
-  /*
-  componentDidUpdate(prevProps, prevState) {
+  
+  componentDidUpdate (prevProps, prevState) {
     if (!prevState.ready && this.state.ready) {
-      this.refs.joyride.start();
+        this.refs.joyride.start();
     }
   }
-  */
   
+  // Add teaching steps into joyride
   addSteps(steps){
     let joyride = this.refs.joyride;
     
@@ -41,9 +46,20 @@ export default class Editor extends Component {
     });
   }
   
+  // Add tooltip into joyride( but not use in anywhere now XDD)
   addTooltip(data) {
     let joyride = this.refs.joyride;
     joyride.addTooltip(data);
+  }
+  
+  // callback for joyride
+  callback(data) {
+    console.log(data);
+    if (data.type === 'finished')
+    {
+      this.props.actions.activeStep(1);
+      impress().goto(1);
+    }
   }
   
   render() {
@@ -52,9 +68,11 @@ export default class Editor extends Component {
         <Joyride ref='joyride' 
                  steps={this.state.steps}
                  type={'continuous'}
+                 keyboardNavigation={false}
                  showSkipButton={true}
                  showStepsProgress={true}
-                 showOverlay={true}/>
+                 showOverlay={true}
+                 callback={this.callback.bind(this)}/>
                  
         <AddModal actions={this.props.actions}
                   addSteps={this.addSteps.bind(this)}/>

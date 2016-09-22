@@ -10,28 +10,30 @@ export default class DownloadButton extends Component {
   componentDidMount(){
     let {addSteps} = this.props;
     
-    addSteps([
-      {
-        text: 'When you finish your SLIDE, you can Download your own <b style="color: #e5b560">[ Oi ]</b> SLIDE.',
-        selector: '.oi-btn-download',
-        position: 'bottom',
-        style: {
-          backgroundColor: '#3e4852',
-          borderRadius: 0,
-          color: 'rgba(255,255,255,.8)',
-          mainColor: '#a94442',
-          beacon: {
-            inner: '#a94442',
-            outer: '#a94442'
-          },
-          skip: {
-            color: 'rgba(255,255,255,.3)',
-            fontSize: '13px'
-          },
-          width: '36rem'
+    setTimeout(() => {
+      addSteps([
+        {
+          text: 'When you finish your SLIDE, you can Download your own <b style="color: #e5b560">[ Oi ]</b> SLIDE.',
+          selector: '.oi-btn-download',
+          position: 'bottom',
+          style: {
+            backgroundColor: '#3e4852',
+            borderRadius: 0,
+            color: 'rgba(255,255,255,.8)',
+            mainColor: '#a94442',
+            beacon: {
+              inner: '#a94442',
+              outer: '#a94442'
+            },
+            skip: {
+              color: 'rgba(255,255,255,.3)',
+              fontSize: '13px'
+            },
+            width: '36rem'
+          }
         }
-      }
-    ]);
+      ]);
+    }, 6100);
   }
   
   handleClick(e){
