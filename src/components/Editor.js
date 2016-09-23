@@ -73,10 +73,15 @@ export default class Editor extends Component {
   
   // callback for joyride
   callback(data) {
-    if (data.type === 'finished')
+    if (data.type === 'step:before'){
+      this.props.actions.activeStep(0);
+      impress().goto(0);
+    }
+    else if (data.type === 'finished')
     {
-      this.props.actions.activeStep(1);
-      impress().goto(1);
+      let _goto = this.props.slides.length > 1 ? 1 : 0;
+      this.props.actions.activeStep(_goto);
+      impress().goto(_goto);
     }
   }
   
