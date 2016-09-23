@@ -21,16 +21,16 @@ Have a BIG thought and try [**[ Oi ]**](https://georgiowan.github.io/Oi/editor/)
 * **Delete** step but not the #OVERVIEW
 * **Download** the slides as *HTML* with basic style 
 * ~~**Export** the slides as *JSON*~~ (Now only download a *HTML* file, but you can import it directly!!)
-* **Import** :tada:
-* The best part is **WYSIWYG** in impress.js
-* Easy **guided tours**
+* The best part is **WYSIWYG** for impress.js
+* [ NEW! ] **Import** :tada:
+* [ NEW! ] Easy **guided tours** with [react-joyride](https://github.com/gilbarbara/react-joyride)
 
 ### Todo..
 
 * Validation of input
 * ~~**Import**~~
 * **More theme** to choose (Only basic style for slides from impress.js demo currently)
-* Fix **component re-render** (EditPanel)
+* Optimize **component re-render** (TinymceEditor, EditPanel, etc.)
 * Improve the **UX/UI** (please help... T^T)
 * Maybe **OAuth**(?)
 
@@ -38,7 +38,8 @@ Have a BIG thought and try [**[ Oi ]**](https://georgiowan.github.io/Oi/editor/)
 
 ## Development/Building
 
-This project made by React with Redux, you can checkout [**Dependencies**](https://github.com/GeorgioWan/Oi#dependencies) first.
+1. This project made by React with Redux, you can checkout [**Dependencies**](https://github.com/GeorgioWan/Oi#dependencies) first.
+2. And you can develop with Redux DevTools Extension, checkout [**Additional**](https://github.com/GeorgioWan/Oi#additional)
 
 ### Let's start
 
@@ -76,3 +77,4 @@ You can develop **[ Oi ]** with [redux-devtools-extension](https://github.com/za
 * [TinyMCE](https://github.com/instructure-react/react-tinymce) - **[ Oi ]** current HTML editor.
 * [react-bootstrap](http://react-bootstrap.github.io/)
 * [react-joyride](https://github.com/gilbarbara/react-joyride) - Guided tours for **[ Oi ]**.
+* [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)

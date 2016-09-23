@@ -69,6 +69,11 @@ table {
 */
 b, strong { font-weight: bold }
 i, em { font-style: italic }
+sub, sup {
+  position: relative;
+}
+sub {bottom: -.25em;}
+sup {top: -.5em;}
 
 /*
     ... and give links a nice look.
@@ -178,4 +183,71 @@ i, em { font-style: italic }
 #overview{ display: none; }
 .impress-on-overview .step {
   opacity: 1;
+}
+/*
+    stamp
+*/
+#oi-stamp{
+  color: rgba(255,255,255,.8);
+  font-size: 12px;
+  min-width: 166px;
+  position: fixed;
+  bottom: 5px;
+  left: 50%;
+  margin-left: -83px;
+  opacity: 0;
+  
+  animation: fadeOutUp .6s ease forwards;
+  
+  span { 
+    color: #d2482e;
+    font-size: 15px;
+    margin: 0 0.4em;
+  }
+  a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    padding: 0.15em 0.25em;
+    margin-left: 0.2em;
+    background: #3e4852;
+    border-radius: 0.2em;
+  
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+    &:hover, &:focus {
+      color: rgba(255,255,255,0.9);
+      background: #54626f;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      text-decoration:none;
+    }
+  }
+  b { font-size: 13px;}
+}
+.impress-on-overview{
+  #oi-stamp{
+    animation: fadeInDown .6s ease 1.5s forwards;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
 }

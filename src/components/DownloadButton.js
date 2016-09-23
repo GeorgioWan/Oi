@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import {Button, Glyphicon, Tooltip, OverlayTrigger} from 'react-bootstrap';
+import {Modal, ControlLabel, FormControl, Button, Glyphicon, Tooltip, OverlayTrigger} from 'react-bootstrap';
 
 import {saveAs} from 'file-saver';
 
 export default class DownloadButton extends Component {
   constructor(props){
     super(props);
+    this.state={
+      show: false,
+      filename: '',
+      author: ''
+    };
   }
   componentDidMount(){
     let {addSteps} = this.props;
@@ -37,33 +42,25 @@ export default class DownloadButton extends Component {
   }
   
   handleClick(e){
-    
-    // export as json
-    //this.exportJSON();
-    
-    // download as HTML
-    this.downloadHTML();
+    if ( e.target.name === 'download' )
+    {
+      // download as HTML
+      this.downloadHTML();
+      this.setState({show: false});
+    }
   }
-  
-  exportJSON(){
-    let exp = JSON.stringify( this.props.slides, 
-                              (key, value) => {
-                                if (value)
-                                  return value;
-                                else
-                                  return undefined;
-                              }, 
-                              2 // Indent
-                            );
-    let blob = new File([exp], {type: 'text/plain;charset=utf-8'});
-    saveAs(blob, 'O-impressive.json');
+  handleChange(e){
+    this.setState({ 
+      [e.target.name]: e.target.value 
+    });
   }
   
   downloadHTML(){
     let doc = this.createHtmlDoc(document.getElementsByTagName('html')[0]);
+    let _filename = (this.state.filename !== '' ? this.state.filename : 'Oh!impressive') + '.html';
     
     let blob = new File(['<!DOCUMENT html>', doc.outerHTML], {type: 'text/plain;charset=utf-8'});
-    saveAs(blob, 'O-impressive.html');
+    saveAs(blob, _filename);
   }
   createHtmlDoc(html){
     let doc = document,
@@ -75,7 +72,7 @@ export default class DownloadButton extends Component {
 			
 		charset_meta.setAttribute('charset', html.ownerDocument.characterSet);
 		
-		let title_text = 'O-impressive Slide';
+		let title_text = this.state.filename !== '' ? this.state.filename : 'Oh!impressive Slide';
 		title.appendChild(doc.createTextNode(title_text));
 		
 		this.setStyle(head);
@@ -96,7 +93,8 @@ export default class DownloadButton extends Component {
     // part of custom impress steps
     let _impress = this.createImpressSteps();
     body.appendChild(_impress);
-    
+    // take a stamp
+    this.createStamp(doc, body);
     // part of script
     this.createScript(doc, body);
   }
@@ -114,6 +112,16 @@ export default class DownloadButton extends Component {
     
     return _impress;
   }
+  createStamp(doc, body){
+    let _stamp = document.createElement('div');
+    var _author = '<b>' + (this.state.author !== '' ? this.state.author : '[ Oi ]') + '</b><span>&hearts;</span>';
+    var _powered = 'Powered by ' + '<a href="https://oawan.me/Oi" target="_blank">[ Oi ]</a>';
+        
+    _stamp.id = 'oi-stamp';
+    _stamp.innerHTML = _author + _powered;
+    
+    body.appendChild(_stamp);
+  }
   createScript(doc, body){
     let _impress = document.createElement('script'),
         _impress_init = document.createElement('script');
@@ -126,14 +134,59 @@ export default class DownloadButton extends Component {
   }
   
   render() {
+    const close = () => this.setState({show: false});
+    const open = () => this.setState({show: true});
     const toolTip = ( <Tooltip id={'downloadTooltip'}>Download your [ Oi ]</Tooltip> );
     
     return (
-      <OverlayTrigger placement="bottom" delayShow={800} overlay={toolTip}>
-        <Button name="download" className="oi-btn oi-btn-o oi-btn-download oi-btn-download-pos" onClick={this.handleClick.bind(this)}>
-          <Glyphicon glyph="download-alt" />
-        </Button>
-      </OverlayTrigger>
+      <div>
+        <OverlayTrigger placement="bottom" delayShow={800} overlay={toolTip}>
+          <Button className="oi-btn oi-btn-o oi-btn-download oi-btn-download-pos" 
+                  onClick={open}>
+            <Glyphicon glyph="download-alt" />
+          </Button>
+        </OverlayTrigger>
+        
+        <Modal show={this.state.show}
+               onHide={close}
+               container={this}
+               enforceFocus={false}
+               bsSize={'sm'}
+               aria-labelledby="download-modal-title">
+          <Modal.Header closeButton>
+            <Modal.Title id="download-modal-title">Download your [Oi]</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <form>
+              <ControlLabel>Author</ControlLabel>
+              <FormControl name={'author'}
+                           type="text"
+                           value={this.state.author}
+                           placeholder="Your name"
+                           onChange={this.handleChange.bind(this)}/>
+                           
+              <ControlLabel>File Name</ControlLabel>
+              <FormControl name={'filename'}
+                           type="text"
+                           value={this.state.filename}
+                           placeholder="Your filename"
+                           onChange={this.handleChange.bind(this)}/>
+            </form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button bsStyle='link' 
+                    onClick={close} 
+                    style={{color: 'gray'}}>
+              cancel
+            </Button>
+            <Button name="download" 
+                    className="oi-btn oi-btn-ctl"
+                    onClick={this.handleClick.bind(this)}>
+              Download
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
     );
   }
 }
