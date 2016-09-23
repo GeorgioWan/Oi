@@ -58,6 +58,33 @@
 /** EDITOR **/
 /************/
 
+/** ImpressComponent **/
+#overview { 
+  &.empty-slide {
+    color: rgba(0,0,0,0.3);
+    display: initial;
+    border: 6px dashed rgba(0,0,0,0.3);
+    border-radius: 5px;
+    min-height: 400px;
+    text-align: center;
+    cursor: default;
+    opacity: 0;
+    animation: fadeIn .7s ease 1s forwards;
+    h1{
+      font-size: 64px;
+      padding-top: 13%;
+      opacity: 0;
+      animation: fadeInUp .7s ease 1.3s forwards;
+    }
+    span{
+     color: rgba(0,0,0,0.2);
+     font-size: 23px; 
+     opacity: 0;
+     animation: fadeInUp .7s ease 1.6s forwards;
+    }
+  }
+}
+
 /** StepsController **/
 #oi-steps-controller{
   width: 234px;
