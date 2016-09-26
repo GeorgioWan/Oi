@@ -88,7 +88,7 @@ let temp = [
   },
   {
     "id": "start-5",
-    "content": "<h6>這是一套生成&nbsp;<a href=\"https://github.com/impress/impress.js/\" target=\"_blank\">&nbsp;impress.js&nbsp;</a>&nbsp;的編輯器</h6>\n<p>&nbsp;</p>\n<p>提供你&nbsp;<strong>更快速</strong>、<strong>更直覺&nbsp;</strong>的方式創作</p>\n<p>&nbsp;</p>\n<h6>更重要的是，你&nbsp;<span style=\"text-decoration: underline;\">不需要</span>&nbsp;撰寫任何程式碼</h6>",
+    "content": "<h6>這是一套生成&nbsp;<a href=\"https://github.com/impress/impress.js/\" target=\"_blank\">impress.js</a>&nbsp;的編輯器</h6>\n<p>&nbsp;</p>\n<p>提供你&nbsp;<strong>更快速</strong>、<strong>更直覺&nbsp;</strong>的方式創作</p>\n<p>&nbsp;</p>\n<h6>更重要的是，你&nbsp;<span style=\"text-decoration: underline;\">不需要</span>&nbsp;撰寫任何程式碼</h6>",
     "data": {
       "x": "850",
       "y": "2800",
@@ -146,7 +146,7 @@ let temp = [
   },
   {
     "id": "start-8",
-    "content": "<h6>這是參考 <a href=\"http://impress.github.io/impress.js\" target=\"_blank\">&nbsp;impress.js&nbsp;Demo </a></h6>\n<h6>&nbsp;</h6>\n<h6>使用 <strong>[ Oi ] </strong>快速建立的範例</h6>\n<h6>&nbsp;</h6>\n<h6>你可以直接參考或修改</h6>\n<h6>&nbsp;</h6>\n<h6>但我們更<sub>期待</sub>看到<strong>你的創作</strong></h6>",
+    "content": "<h6>這是參考 <a href=\"http://impress.github.io/impress.js\" target=\"_blank\">impress.js Demo</a></h6>\n<h6>&nbsp;</h6>\n<h6>使用 <strong>[ Oi ] </strong>快速建立的範例</h6>\n<h6>&nbsp;</h6>\n<h6>你可以直接參考或修改</h6>\n<h6>&nbsp;</h6>\n<h6>但我們更<sub>期待</sub>看到<strong>你的創作</strong></h6>",
     "data": {
       "x": "2950",
       "y": "-2200",

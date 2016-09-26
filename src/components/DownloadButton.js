@@ -84,6 +84,11 @@ export default class DownloadButton extends Component {
   setStyle(head){
     let style_font = document.getElementsByTagName('style')[1].cloneNode(true);
 		let style_base = document.getElementsByTagName('style')[2].cloneNode(true);
+		let _hint_show_on = this.props.slides.length > 1 ? '.impress-on-' + this.props.slides[1].id : '.impress-on-overview';
+		
+		// Change hint's purpose
+		style_base.innerHTML = style_base.innerHTML.replace('.impress-on-start-1', _hint_show_on);
+		
 		head.appendChild(style_font);
 		head.appendChild(style_base);
   }
@@ -93,10 +98,13 @@ export default class DownloadButton extends Component {
     // part of custom impress steps
     let _impress = this.createImpressSteps();
     body.appendChild(_impress);
+    
+    // take a hint
+    this.createHint(body);
     // take a stamp
-    this.createStamp(doc, body);
+    this.createStamp(body);
     // part of script
-    this.createScript(doc, body);
+    this.createScript(body);
   }
   createImpressSteps(){
     let _impress = document.createElement('div');
@@ -112,7 +120,15 @@ export default class DownloadButton extends Component {
     
     return _impress;
   }
-  createStamp(doc, body){
+  createHint(body){
+    let _hint = document.createElement('div');
+    
+    _hint.id = 'oi-hint';
+    _hint.innerHTML = 'Use a <b>spacebar</b> or <b>arrow keys</b> to navigate';
+    
+    body.appendChild(_hint);
+  }
+  createStamp(body){
     let _stamp = document.createElement('div');
     var _author = '<b>' + (this.state.author !== '' ? this.state.author : '[ Oi ]') + '</b><span>&hearts;</span>';
     var _powered = 'Powered by ' + '<a href="https://oawan.me/Oi" target="_blank">[ Oi ]</a>';
@@ -122,7 +138,7 @@ export default class DownloadButton extends Component {
     
     body.appendChild(_stamp);
   }
-  createScript(doc, body){
+  createScript(body){
     let _impress = document.createElement('script'),
         _impress_init = document.createElement('script');
     

@@ -103,7 +103,7 @@ export default class Editor extends Component {
         <EditPanel {...this.props}
                    addSteps={this.addSteps.bind(this)}/>
                    
-        <StepsController actions={this.props.actions}
+        <StepsController {...this.props}
                          addSteps={this.addSteps.bind(this)}/>
                    
         <DownloadButton slides={this.props.slides}

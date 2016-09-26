@@ -82,7 +82,7 @@ sup {top: -.5em;}
   a {
     color: rgba(255,255,255,0.8);
     text-decoration: none;
-    padding: 0 0.1em;
+    padding: 0 0.3em;
     background: #3e4852;
     border-radius: 0.2em;
   
@@ -185,10 +185,39 @@ sup {top: -.5em;}
   opacity: 1;
 }
 /*
+    hint
+*/
+#oi-hint {
+  opacity: 0;
+  animation: fadeOutUp .6s ease forwards;
+
+  color: rgba(255,255,255,.8);
+  background-color: #3e4852;
+  font-size: 20px;
+  text-align: center;
+
+  width: 400px;
+  height: 100px;
+  line-height: 100px;
+
+  position: fixed;
+  left: 25px;
+  top: 40%;
+
+  border-radius: 5px;
+  filter: drop-shadow(0 8px 8px rgba(0,0,0,.3));
+}
+#oi-hint b {
+  color: #e5b560;
+}
+.impress-on-start-1 #oi-hint{
+  animation: fadeInDown .6s ease 3s forwards;
+}
+/*
     stamp
 */
 #oi-stamp{
-  color: rgba(255,255,255,.8);
+  color: #3e4852;
   font-size: 12px;
   min-width: 166px;
   position: fixed;

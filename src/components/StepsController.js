@@ -4,6 +4,9 @@ import {ButtonToolbar, ButtonGroup, Button, Glyphicon} from 'react-bootstrap';
 export default class StepsController extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      show: false
+    };
   }
   componentDidMount(){
     let {addSteps} = this.props;
@@ -32,7 +35,12 @@ export default class StepsController extends Component {
         }
       ]);
     }, 6100);
-    
+  }
+  componentWillReceiveProps(nextProps){
+    if ( nextProps.slides.length > 1 )
+      this.setState({show: true});
+    else
+      this.setState({show: false});
   }
   
   handleClick(e){
@@ -61,7 +69,7 @@ export default class StepsController extends Component {
   
   render() {
     return (
-      <div id='oi-steps-controller'>
+      <div id='oi-steps-controller' className={this.state.show ? 'slideIn' : 'slideOut'}>
         <ButtonToolbar>
           <ButtonGroup>
             <Button name="prev" className='oi-btn oi-btn-ctl' onClick={this.handleClick.bind(this)}>

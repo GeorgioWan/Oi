@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {step} from '../types/step';
 
 export default class ImpressComponent extends Component {
   constructor(props){
@@ -59,8 +58,8 @@ export default class ImpressComponent extends Component {
                        style={{ position: slides[0].style ? slides[0].style.position : '',
                                 transform: slides[0].style ? slides[0].style.transform : ''
                        }}>
-                    <h1>Oops, empty slide now!</h1>
-                    <span><b>Import</b> your [ Oi ] slide or <b>Add</b> a STEP first.</span>
+                    <h1>Oops, empty slides now!</h1>
+                    <span><b>Import</b> your [ Oi ] slides or <b>Add</b> a STEP first.</span>
                   </div>
                 );
                 

@@ -19,7 +19,7 @@ Have a BIG thought and try [**[ Oi ]**](https://georgiowan.github.io/Oi/editor/)
 * **Create** step
 * **Edit** every step in slides
 * **Delete** step but not the #OVERVIEW
-* **Download** the slides as *HTML* with basic style 
+* **Download** the slides as *HTML* with basic style ( [ NEW! ] Download with **hint** and **author stamp** )
 * ~~**Export** the slides as *JSON*~~ (Now only download a *HTML* file, but you can import it directly!!)
 * The best part is **WYSIWYG** for impress.js
 * [ NEW! ] **Import** :tada:
@@ -27,6 +27,7 @@ Have a BIG thought and try [**[ Oi ]**](https://georgiowan.github.io/Oi/editor/)
 
 ### Todo..
 
+* Support more browser and Pad (Better on Chrome now)
 * Validation of input
 * ~~**Import**~~
 * **More theme** to choose (Only basic style for slides from impress.js demo currently)
@@ -35,6 +36,12 @@ Have a BIG thought and try [**[ Oi ]**](https://georgiowan.github.io/Oi/editor/)
 * Maybe **OAuth**(?)
 
 ... anything you thought please PR or give an issue, thanks!!!
+
+## Wonderful works via [ Oi ]
+
+[**https://oawan.me/Oi - [ Oi ]**](https://oawan.me/Oi)
+
+> If you have any work of slides or website via [ Oi ], please let me know (leave an [issue](https://github.com/GeorgioWan/Oi/issues) or push a PR), I'd love to share your wonderful works!!
 
 ## Development/Building
 
@@ -78,3 +85,4 @@ You can develop **[ Oi ]** with [redux-devtools-extension](https://github.com/za
 * [react-bootstrap](http://react-bootstrap.github.io/)
 * [react-joyride](https://github.com/gilbarbara/react-joyride) - Guided tours for **[ Oi ]**.
 * [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
+* [Animate.css](https://daneden.github.io/animate.css/)
