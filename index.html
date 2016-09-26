@@ -1,143 +1,361 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>[ Oi ] by GeorgioWan</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">[ Oi ]</h1>
-      <h2 class="project-tagline">A WYSIWYG Editor to create slides in impress.js.</h2>
-      <a href="https://github.com/GeorgioWan/Oi" class="btn">View on GitHub</a>
-      <a href="https://github.com/GeorgioWan/Oi/zipball/master" class="btn">Download .zip</a>
-      <a href="https://georgiowan.github.io/Oi/editor" class="btn" target="_blank">Try it out !</a>
-    </section>
+<!DOCUMENT html><html><head><meta charset="UTF-8"><title>Oi</title><style type="text/css">@import url(https://fonts.googleapis.com/css?family=Oxygen);</style><style type="text/css">@charset "UTF-8";
+/*** base style for impress ***/
+/************/
+/*** Font ***/
+/************/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
 
-    <section class="main-content">
-      <h1>
-<a id="-oi-" class="anchor" href="#-oi-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>[ Oi ]</h1>
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
 
-<p>A WYSIWYG Editor to create slides in impress.js.</p>
+body {
+  line-height: 1;
+  font-family: "Oxygen", georgia, "\5FAE\8EDF\6B63\9ED1\9AD4", "sans-serif";
+  min-height: 740px;
+  background: #d7d7d7;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(#f0f0f0), to(#9ba5af));
+  background: -webkit-radial-gradient(#f0f0f0, #9ba5af);
+  background: -moz-radial-gradient(#f0f0f0, #9ba5af);
+  background: -ms-radial-gradient(#f0f0f0, #9ba5af);
+  background: -o-radial-gradient(#f0f0f0, #9ba5af);
+  background: radial-gradient(#f0f0f0, #9ba5af); }
 
-<p>Have a BIG thought and try <a href="https://georgiowan.github.io/Oi/editor/"><strong>[ Oi ]</strong></a> out !</p>
+ol, ul {
+  list-style: none; }
 
-<h2>
-<a id="you-must-first-know" class="anchor" href="#you-must-first-know" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>You must first know</h2>
+blockquote, q {
+  quotes: none; }
+  blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none; }
 
-<ul>
-<li>What is <a href="https://github.com/impress/impress.js"><strong>impress.js</strong></a>, and how it works.</li>
-<li>What is <a href="https://facebook.github.io/react/"><strong>React</strong></a> and <a href="http://redux.js.org/"><strong>Redux</strong></a>.</li>
-<li>Familiar with <a href="https://babeljs.io/docs/learn-es2015/"><strong>es2015 (ES6)</strong></a>.</li>
-</ul>
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
 
-<h2>
-<a id="current-progress" class="anchor" href="#current-progress" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Current progress</h2>
+/*
+    Now let's bring some text styles back ...
+*/
+b, strong {
+  font-weight: bold; }
 
-<h3>
-<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h3>
+i, em {
+  font-style: italic; }
 
-<ul>
-<li>
-<strong>Create</strong> step</li>
-<li>
-<strong>Edit</strong> every step in slides</li>
-<li>
-<strong>Delete</strong> step but not the #OVERVIEW</li>
-<li>
-<strong>Download</strong> the slides as <em>HTML</em> with basic style </li>
-<li>
-<strong>Export</strong> the slides as <em>JSON</em>
-</li>
-<li>The best part is <strong>WYSIWYG</strong> in impress.js</li>
-</ul>
+sub, sup {
+  position: relative; }
 
-<h3>
-<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Todo..</h3>
+sub {
+  bottom: -.25em; }
 
-<ul>
-<li>Validation of input</li>
-<li>
-<strong>Import</strong> </li>
-<li>
-<strong>More theme</strong> to choose (Only basic style for slides from impress.js demo currently)</li>
-<li>Fix <strong>component re-render</strong> (EditPanel)</li>
-<li>Improve the <strong>UX/UI</strong> (please help... T^T)</li>
-<li>Maybe <strong>OAuth</strong>(?)</li>
-</ul>
+sup {
+  top: -.5em; }
 
-<p>... anything you thought please PR or give an issue, thanks!!!</p>
+/*
+    ... and give links a nice look.
+*/
+.step a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 0 0.3em;
+  background: #3e4852;
+  border-radius: 0.2em;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s; }
+  .step a:hover, .step a:focus {
+    color: rgba(255, 255, 255, 0.9);
+    background: #54626f;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-decoration: none; }
 
-<h2>
-<a id="developmentbuilding" class="anchor" href="#developmentbuilding" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development/Building</h2>
+/*
+    step style
+*/
+.impress-enabled .step {
+  margin: 0;
+  opacity: 0.3;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -ms-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s; }
+  .impress-enabled .step.active {
+    opacity: 1; }
 
-<p>This project made by React with Redux, you can checkout <a href="https://github.com/GeorgioWan/Oi#dependencies"><strong>Dependencies</strong></a> first.</p>
+.step {
+  cursor: pointer;
+  position: relative;
+  width: 900px;
+  padding: 20px;
+  margin: 20px auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Oxygen", georgia, "\5FAE\8EDF\6B63\9ED1\9AD4", "sans-serif";
+  font-size: 48px;
+  /*****************/
+  /*** Font-Size ***/
+  /*****************/ }
+  .step h1, .step .h1 {
+    font-size: 124.8px; }
+  .step h2, .step .h2 {
+    font-size: 103.2px; }
+  .step h3, .step .h3 {
+    font-size: 81.6px; }
+  .step h4, .step .h4 {
+    font-size: 62.4px; }
+  .step h5, .step .h5 {
+    font-size: 48px; }
+  .step h6, .step .h6 {
+    font-size: 40.8px; }
 
-<h3>
-<a id="lets-start" class="anchor" href="#lets-start" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Let's start</h3>
+/*
+    slide style
+*/
+.slide {
+  display: block;
+  line-height: 1.4;
+  width: 1000px;
+  height: 700px;
+  padding: 40px 60px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #666666;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  font-size: 35px;
+  letter-spacing: -1px; }
+  .slide h1, .slide .h1 {
+    font-size: 91px; }
+  .slide h2, .slide .h2 {
+    font-size: 75.25px; }
+  .slide h3, .slide .h3 {
+    font-size: 59.5px; }
+  .slide h4, .slide .h4 {
+    font-size: 45.5px; }
+  .slide h5, .slide .h5 {
+    font-size: 35px; }
+  .slide h6, .slide .h6 {
+    font-size: 29.75px; }
 
-<ol>
-<li>Install <strong>NodeJS</strong>.</li>
-<li>Fork this project or clone it <code>git clone https://github.com/GeorgioWan/Oi.git</code> .</li>
-<li><code>cd Oi</code></li>
-<li>Install development dependencies <code>npm install</code> .</li>
-<li>Please checkout your branch <code>git checkout -b YOUR-BRANCH-NAME</code> .</li>
-<li>Start to develop <code>npm run dev</code> (it will run with <strong>webpack-dev-server</strong>)</li>
-</ol>
+/*
+    overview
+*/
+#overview {
+  display: none; }
 
-<h3>
-<a id="additional" class="anchor" href="#additional" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Additional</h3>
+.impress-on-overview .step.past, 
+.impress-on-overview .step.future {
+  animation: bluring .8s linear 1.5s forwards;
+}
+.impress-on-overview #overview{
+  display: initial;
+  opacity: 1;
+  filter: blur(0);
+  line-height: 90px;
+  cursor: default;
+}
+.impress-on-overview #oi-title{
+  color: #3e4852;
+  margin-bottom: 60px;
+  opacity: 0;
+  animation: bounceInUp 1s ease 1.5s forwards;
+}
+.impress-on-overview svg{
+  opacity: 0;
+  animation: bounceInUp 1s ease 1.6s forwards;
+}
+.impress-on-overview #oi-try-it-out{
+  opacity: 0;
+  animation: bounceInUp 1s ease 1.7s forwards;
+}
+.impress-on-overview #oi-view-on-github{
+  opacity: 0;
+  animation: bounceInUp 1s ease 1.8s forwards;
+}
+.impress-on-overview #overview a,
+.impress-on-overview #overview b,
+.impress-on-overview #overview svg{  
+  filter:drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.3));
+}
+/*
+    hint
+*/
+#oi-hint {
+  opacity: 0;
+  animation: fadeOutUp .6s ease forwards;
 
-<p>You can develop <strong>[ Oi ]</strong> with <a href="https://github.com/zalmoxisus/redux-devtools-extension">redux-devtools-extension</a>, it can show you what <strong>action</strong> you dispatch and what's change in <strong>state</strong>.</p>
+  color: rgba(255,255,255,.8);
+  background-color: #3e4852;
+  font-size: 20px;
+  text-align: center;
 
-<h2>
-<a id="start-with" class="anchor" href="#start-with" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Start with</h2>
+  width: 400px;
+  height: 100px;
+  line-height: 100px;
 
-<ul>
-<li><a href="https://github.com/gaearon/react-hot-boilerplate">react-hot-boilerplate</a></li>
-</ul>
+  position: fixed;
+  left: 25px;
+  top: 40%;
 
-<h2>
-<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies</h2>
+  border-radius: 5px;
+  filter: drop-shadow(0 8px 8px rgba(0,0,0,.3));
+}
+#oi-hint b {
+  color: #e5b560;
+}
+.impress-on-start-1 #oi-hint{
+  animation: fadeInDown .6s ease 3s forwards;
+}
+/*
+    stamp
+*/
+#oi-stamp {
+  color: #3e4852;
+  font-size: 12px;
+  min-width: 166px;
+  position: fixed;
+  bottom: 5px;
+  left: 50%;
+  margin-left: -83px;
+  opacity: 0;
+  animation: fadeOutUp .6s ease forwards; }
+  #oi-stamp span {
+    color: #d2482e;
+    font-size: 15px;
+    margin: 0 0.4em; }
+  #oi-stamp a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    padding: 0.15em 0.25em;
+    margin-left: 0.2em;
+    background: #3e4852;
+    border-radius: 0.2em;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s; }
+    #oi-stamp a:hover, #oi-stamp a:focus {
+      color: rgba(255, 255, 255, 0.9);
+      background: #54626f;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      text-decoration: none; }
+  #oi-stamp b {
+    font-size: 13px; }
 
-<h3>
-<a id="react" class="anchor" href="#react" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>React</h3>
+.impress-on-overview #oi-stamp {
+  animation: fadeInDown .6s ease 1.5s forwards; }
 
-<ul>
-<li><a href="https://github.com/facebook/react">React</a></li>
-<li><a href="https://github.com/reactjs/redux">Redux</a></li>
-</ul>
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0); }
+  to {
+    opacity: 1;
+    transform: none; } }
 
-<h3>
-<a id="webpack" class="anchor" href="#webpack" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webpack</h3>
-
-<ul>
-<li><a href="https://webpack.github.io/">Webpack</a></li>
-<li><a href="https://github.com/webpack/webpack-dev-server">webpack-dev-server</a></li>
-<li><a href="https://github.com/babel/babel-loader">babel-loader</a></li>
-<li><a href="https://github.com/gaearon/react-hot-loader">react-hot-loader</a></li>
-</ul>
-
-<h3>
-<a id="others" class="anchor" href="#others" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Others</h3>
-
-<ul>
-<li><a href="https://github.com/instructure-react/react-tinymce">TinyMCE</a></li>
-<li><a href="http://react-bootstrap.github.io/">react-bootstrap</a></li>
-</ul>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/GeorgioWan/Oi">[ Oi ]</a> is maintained by <a href="https://github.com/GeorgioWan">GeorgioWan</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
-  </body>
-</html>
+@keyframes fadeOutUp {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0); } }
+@keyframes bluring {
+  from {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+  }
+  to {
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+  } 
+}
+@keyframes bounceInUp {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  from {
+    opacity: 0;
+    transform: translate3d(0, 3000px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+  75% {
+    transform: translate3d(0, 10px, 0);
+  }
+  90% {
+    transform: translate3d(0, -5px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+</style></head><body class="impress-not-supported">
+<div id="oi-hint">Use a <b>spacebar</b> or <b>arrow keys</b> to navigate</div>
+<div id="impress"><div class="step slide" id="start-1" data-x="-1100" data-y="-1500" data-z="0" data-scale="1" data-rotate="" data-rotate-x="0" data-rotate-y="0" data-rotate-z="0"><p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p style="text-align: center;">你正在準備這種<strong>傳統式</strong>投影片嗎？</p></div><div class="step slide" id="start-2" data-x="0" data-y="-1500" data-z="0" data-scale="1" data-rotate="" data-rotate-x="0" data-rotate-y="0" data-rotate-z="0"><p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">或許你該給自己一點<strong>新的嘗試</strong></p></div><div class="step slide" id="start-3" data-x="1100" data-y="-1500" data-z="0" data-scale="1" data-rotate="" data-rotate-x="0" data-rotate-y="0" data-rotate-z="0"><p>&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4 style="text-align: center;">讓你的<strong>創意</strong>在這裡大放異彩吧！</h4></div><div class="step" id="start-4" data-x="0" data-y="-300" data-z="0" data-scale="4" data-rotate="" data-rotate-x="0" data-rotate-y="0" data-rotate-z="0"><h4 style="text-align: center;">&nbsp;歡迎使用&nbsp;</h4>
+<h1 style="text-align: center;"><strong>[Oi]</strong></h1>
+<h6 style="text-align: center;">&nbsp;</h6>
+<h6 style="text-align: center;">&nbsp;- 創造讓人印象深刻的投影片編輯器 -</h6></div><div class="step" id="start-5" data-x="850" data-y="2800" data-z="0" data-scale="5" data-rotate="90" data-rotate-x="0" data-rotate-y="0" data-rotate-z="90"><h6>這是一套生成&nbsp;<a href="https://github.com/impress/impress.js/" target="_blank">impress.js</a>&nbsp;的編輯器</h6>
+<p>&nbsp;</p>
+<p>提供你&nbsp;<strong>更快速</strong>、<strong>更直覺&nbsp;</strong>的方式創作</p>
+<p>&nbsp;</p>
+<h6>更重要的是，你&nbsp;<span style="text-decoration: underline;">不需要</span>&nbsp;撰寫任何程式碼</h6></div><div class="step" id="start-6" data-x="3100" data-y="1300" data-z="0" data-scale="6" data-rotate="180" data-rotate-x="0" data-rotate-y="0" data-rotate-z="180"><p style="text-align: center;">你只需要</p>
+<h1 style="text-align: center;"><strong>專注</strong></h1>
+<p style="text-align: center;">&nbsp;於你的流程設計</p></div><div class="step" id="start-7" data-x="2900" data-y="1400" data-z="-3000" data-scale="1" data-rotate="300" data-rotate-x="0" data-rotate-y="0" data-rotate-z="300"><p style="text-align: center;">和<strong>想像力</strong></p></div><div class="step" id="start-8" data-x="2950" data-y="-2200" data-z="0" data-scale="6" data-rotate="270" data-rotate-x="0" data-rotate-y="0" data-rotate-z="270"><h6>這是參考 <a href="http://impress.github.io/impress.js" target="_blank">impress.js Demo</a></h6>
+<h6>&nbsp;</h6>
+<h6>使用 <strong>[ Oi ] </strong>快速建立的範例</h6>
+<h6>&nbsp;</h6>
+<h6>你可以直接參考或修改</h6>
+<h6>&nbsp;</h6>
+<h6>但我們更<sub>期待</sub>看到<strong>你的創作</strong></h6></div><div class="step" id="start-9" data-x="5600" data-y="-900" data-z="0" data-scale="6" data-rotate="" data-rotate-x="0" data-rotate-y="0" data-rotate-z="0"><p style="text-align: center;">別讓範例限制你的</p>
+<h1 style="text-align: center;">想像力</h1></div><div class="step" id="start-10" data-x="6000" data-y="1500" data-z="0" data-scale="4" data-rotate="20" data-rotate-x="0" data-rotate-y="0" data-rotate-z="20"><h6 style="text-align: center;">&nbsp;在我們震撼你的觀眾前 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</h6>
+<p>&nbsp;</p>
+<p style="text-align: center;">先拿起紙筆準備<span style="color: #1583d6;"><sup>創作</sup></span>吧！</p>
+<p style="text-align: center;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<sup><img src="http://rs374.pbsrc.com/albums/oo187/gamegeek2589/Gif/tumblr_lhgmxe1Pe01qbmtfl.gif~c200" alt="pic by http://photobucket.com/images/wink%20gif" width="97" height="97"></sup></p></div><div class="step" id="start-11" data-x="5000" data-y="2500" data-z="0" data-scale="2" data-rotate="" data-rotate-x="0" data-rotate-y="0" data-rotate-z="0"><p style="text-align: center;">啊！忘了提醒你...</p></div><div class="step" id="start-12" data-x="5350" data-y="2700" data-z="-200" data-scale="2" data-rotate="" data-rotate-x="-40" data-rotate-y="10" data-rotate-z="0"><p style="text-align: center;">你的創作是 <strong>3D*</strong>&nbsp;的 :)</p>
+<p style="text-align: left;"><span style="font-size: 11px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;一起玩轉你的投影片吧！</span></p></div><div class="step" id="overview" data-x="3000" data-y="800" data-z="0" data-scale="9" data-rotate="" data-rotate-x="0" data-rotate-y="0" data-rotate-z="0"><h1 id='oi-title' style="text-align: center;"><b>[ Oi ]</b></h1><svg height="20" width="700">
+  <line x1="150" y1="0" x2="700" y2="0" style="stroke:#3e4852;stroke-width:5" />
+</svg><p id='oi-try-it-out' style="text-align: center;"><a href="https://oawan.me/Oi/editor" target="_blank">Try it out!</a></p><p id='oi-view-on-github' style="text-align: center;"><a href="https://github.com/GeorgioWan/Oi/" target="_blank">View on Github</a></p></div></div><div id="oi-stamp">© 2016 <b>OAwan</b><span>♥</span>Powered by <a href="https://oawan.me/Oi" target="_blank">[ Oi ]</a></div><script src="http://cdnjs.cloudflare.com/ajax/libs/impress.js/0.5.3/impress.min.js"></script><script>impress().init();</script></body></html>
