@@ -739,6 +739,7 @@
         // KEYBOARD NAVIGATION HANDLERS
 
         // Prevent default keydown action when one of supported key is pressed.
+        /*
         document.addEventListener( "keydown", function( event ) {
             if ( event.keyCode === 9 ||
                ( event.keyCode >= 32 && event.keyCode <= 34 ) ||
@@ -746,6 +747,7 @@
                 event.preventDefault();
             }
         }, false );
+        */
 
         // Trigger impress action (next or prev) on keyup.
 
@@ -762,6 +764,7 @@
         //   positioning. I didn't want to just prevent this default action, so I used [tab]
         //   as another way to moving to next step... And yes, I know that for the sake of
         //   consistency I should add [shift+tab] as opposite action...
+        /*
         document.addEventListener( "keyup", function( event ) {
 
             if ( event.shiftKey || event.altKey || event.ctrlKey || event.metaKey ) {
@@ -789,6 +792,7 @@
                 event.preventDefault();
             }
         }, false );
+        */
 
         // Delegated handler for clicking on the links to presentation steps
         document.addEventListener( "click", function( event ) {
