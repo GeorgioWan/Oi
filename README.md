@@ -86,3 +86,7 @@ You can develop **[ Oi ]** with [redux-devtools-extension](https://github.com/za
 * [react-joyride](https://github.com/gilbarbara/react-joyride) - Guided tours for **[ Oi ]**.
 * [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
 * [Animate.css](https://daneden.github.io/animate.css/)
+
+## License
+
+Copyright © 2016 Georgio Wan - [MIT License](LICENSE)
