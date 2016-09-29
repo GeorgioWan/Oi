@@ -202,7 +202,8 @@ sup {top: -.5em;}
 
   position: fixed;
   left: 25px;
-  top: 40%;
+  bottom: 14%;
+  z-index: 9999;
 
   border-radius: 5px;
   filter: drop-shadow(0 8px 8px rgba(0,0,0,.3));
