@@ -2,6 +2,8 @@
 [ Oi ] [![Build Status](https://travis-ci.org/GeorgioWan/Oi.svg?branch=master)](https://travis-ci.org/GeorgioWan/Oi)
 =====================
 
+![Oi](http://i.imgur.com/aW9JsFY.gif)
+
 A WYSIWYG Editor to create slides in impress.js.
 
 Have a BIG thought and try [**[ Oi ]**](https://georgiowan.github.io/Oi/editor/) out !
