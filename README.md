@@ -1,3 +1,12 @@
+> # :sparkles: BIG NEWS :sparkles:
+
+> The **NEW VERSION** is under development.
+
+> It'll be more friendly to use, more powerful and more impressive!
+
+> Please stay tuned, Coming soon!! :wink:
+
+> ###### *2016/11/15*, OAwan
 
 [ Oi ] [![Build Status](https://travis-ci.org/GeorgioWan/Oi.svg?branch=master)](https://travis-ci.org/GeorgioWan/Oi)
 =====================
