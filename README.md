@@ -1,11 +1,21 @@
 > # :sparkles: BIG NEWS :sparkles:
 
+> I rewrite the framework of impress.js with **ReactJS**, it's called [**React-impressJS**](https://github.com/GeorgioWan/react-impressjs)
+>
+> **React-impressJS** provides the better way to build a React App, it operate Steps with Virtual DOM but not DOM!
+>
+> If you are playing impress.js with ReactJS, you should give it a shot!!
+>
+> And please stay tuned for **[ Oi ]** :relaxed:
+>
+> ###### *2017/03/28*, OAwan
+
 > The **NEW VERSION** is under development.
-
+>
 > It'll be more friendly to use, more powerful and more impressive!
-
+>
 > Please stay tuned, Coming soon!! :wink:
-
+>
 > ###### *2016/11/15*, OAwan
 
 [ Oi ] [![Build Status](https://travis-ci.org/GeorgioWan/Oi.svg?branch=master)](https://travis-ci.org/GeorgioWan/Oi)
