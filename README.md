@@ -60,7 +60,7 @@ Have a BIG thought and try [**[ Oi ]**](https://georgiowan.github.io/Oi/editor/)
 
 ## Wonderful works via [ Oi ]
 
-[**https://oawan.me/Oi - [ Oi ]**](https://oawan.me/Oi)
+[**https://project.oawan.me/Oi - [ Oi ]**](https://georgiowan.github.io/Oi)
 
 > If you have any work of slides or website via [ Oi ], please let me know (leave an [issue](https://github.com/GeorgioWan/Oi/issues) or push a PR), I'd love to share your wonderful works!!
 
