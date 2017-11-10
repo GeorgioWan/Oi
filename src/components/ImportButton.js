@@ -102,10 +102,10 @@ export default class ImportButton extends Component {
     
     return (
       <OverlayTrigger placement="bottom" delayShow={800} overlay={toolTip}>
-        <Button className='btn oi-btn oi-btn-o oi-btn-import oi-btn-import-pos'>
+        <div className='btn oi-btn oi-btn-o oi-btn-import oi-btn-import-pos' style={{padding: '16px 0'}}>
           <Glyphicon glyph="open" />
           <input type='file' id='file' onChange={this.handleChange.bind(this)}/>
-        </Button>
+        </div>
       </OverlayTrigger>
     );
   }
